@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.Repositorio", "Koob.Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.Servicios", "Koob.Servicios\Koob.Servicios.csproj", "{79180B15-F91F-45D4-B57F-2BACD7D6A948}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.AccesoADatos", "Koob.AccesoADatos\Koob.AccesoADatos.csproj", "{9BBDCB77-A35F-44B0-820D-3A05C89F7579}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{79180B15-F91F-45D4-B57F-2BACD7D6A948}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79180B15-F91F-45D4-B57F-2BACD7D6A948}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79180B15-F91F-45D4-B57F-2BACD7D6A948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BBDCB77-A35F-44B0-820D-3A05C89F7579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BBDCB77-A35F-44B0-820D-3A05C89F7579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BBDCB77-A35F-44B0-820D-3A05C89F7579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BBDCB77-A35F-44B0-820D-3A05C89F7579}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
