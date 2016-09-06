@@ -1,0 +1,702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="koobModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="administradores">
+          <Key>
+            <PropertyRef Name="adm_codigo" />
+          </Key>
+          <Property Name="adm_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adm_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="adm_password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="calificaciones">
+          <Key>
+            <PropertyRef Name="cal_codigo" />
+          </Key>
+          <Property Name="cal_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cal_valor" Type="int" Nullable="false" />
+          <Property Name="usu_codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categorias">
+          <Key>
+            <PropertyRef Name="cat_codigo" />
+          </Key>
+          <Property Name="cat_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_nombre" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="comentarios">
+          <Key>
+            <PropertyRef Name="com_codigo" />
+          </Key>
+          <Property Name="com_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="com_comentario" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="usu_codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="deseos">
+          <Key>
+            <PropertyRef Name="des_codigo" />
+          </Key>
+          <Property Name="des_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_codigo" Type="int" Nullable="false" />
+          <Property Name="lib_codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fotos">
+          <Key>
+            <PropertyRef Name="fot_codigo" />
+          </Key>
+          <Property Name="fot_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fot_foto1" Type="longblob" Nullable="false" />
+          <Property Name="fot_foto2" Type="longblob" />
+          <Property Name="fot_foto3" Type="longblob" />
+          <Property Name="fot_foto4" Type="longblob" />
+          <Property Name="fot_foto5" Type="longblob" />
+          <Property Name="lib_codigo" Type="int" Nullable="false" />
+          <Property Name="usu_codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="interesados">
+          <Key>
+            <PropertyRef Name="int_codigo" />
+          </Key>
+          <Property Name="int_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_codigo_interesado" Type="int" Nullable="false" />
+          <Property Name="lib_codigo" Type="int" Nullable="false" />
+          <Property Name="usu_codigo_dueño" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="libros">
+          <Key>
+            <PropertyRef Name="lib_codigo" />
+            <PropertyRef Name="usu_codigo" />
+          </Key>
+          <Property Name="lib_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lib_isbn" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="lib_descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="lib_ubicacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_codigo" Type="int" Nullable="false" />
+          <Property Name="cat_codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reportes">
+          <Key>
+            <PropertyRef Name="rep_codigo" />
+          </Key>
+          <Property Name="rep_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_codigo" Type="int" Nullable="false" />
+          <Property Name="adm_codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="usu_codigo" />
+          </Key>
+          <Property Name="usu_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usu_correo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usu_telefono" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_Calificaciones_Usuarios1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="calificaciones" Type="Self.calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="calificaciones">
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Comentarios_Usuarios1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="comentarios">
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errores durante la generación:
+advertencia 6035: La relación 'fk_Deseos_Libros1' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
+        <Association Name="fk_Deseos_Libros1" />-->
+        <Association Name="fk_Deseos_Usuarios1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="deseos" Type="Self.deseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="deseos">
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Fotos_Libros1">
+          <End Role="libros" Type="Self.libros" Multiplicity="1" />
+          <End Role="fotos" Type="Self.fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="libros">
+              <PropertyRef Name="lib_codigo" />
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="fotos">
+              <PropertyRef Name="lib_codigo" />
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Interesados_Libros1">
+          <End Role="libros" Type="Self.libros" Multiplicity="1" />
+          <End Role="interesados" Type="Self.interesados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="libros">
+              <PropertyRef Name="lib_codigo" />
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="interesados">
+              <PropertyRef Name="lib_codigo" />
+              <PropertyRef Name="usu_codigo_dueño" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Interesados_Usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="interesados" Type="Self.interesados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="interesados">
+              <PropertyRef Name="usu_codigo_interesado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Libros_Categorias1">
+          <End Role="categorias" Type="Self.categorias" Multiplicity="1" />
+          <End Role="libros" Type="Self.libros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorias">
+              <PropertyRef Name="cat_codigo" />
+            </Principal>
+            <Dependent Role="libros">
+              <PropertyRef Name="cat_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Libros_Usuarios1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="libros" Type="Self.libros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="libros">
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Reportes_Administrador1">
+          <End Role="administradores" Type="Self.administradores" Multiplicity="1" />
+          <End Role="reportes" Type="Self.reportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="administradores">
+              <PropertyRef Name="adm_codigo" />
+            </Principal>
+            <Dependent Role="reportes">
+              <PropertyRef Name="adm_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Reportes_Usuarios1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="reportes" Type="Self.reportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="reportes">
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="koobModelStoreContainer">
+          <EntitySet Name="administradores" EntityType="Self.administradores" Schema="koob" store:Type="Tables" />
+          <EntitySet Name="calificaciones" EntityType="Self.calificaciones" Schema="koob" store:Type="Tables" />
+          <EntitySet Name="categorias" EntityType="Self.categorias" Schema="koob" store:Type="Tables" />
+          <EntitySet Name="comentarios" EntityType="Self.comentarios" Schema="koob" store:Type="Tables" />
+          <EntitySet Name="deseos" EntityType="Self.deseos" Schema="koob" store:Type="Tables" />
+          <EntitySet Name="fotos" EntityType="Self.fotos" Schema="koob" store:Type="Tables" />
+          <EntitySet Name="interesados" EntityType="Self.interesados" Schema="koob" store:Type="Tables" />
+          <EntitySet Name="libros" EntityType="Self.libros" Schema="koob" store:Type="Tables" />
+          <EntitySet Name="reportes" EntityType="Self.reportes" Schema="koob" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="koob" store:Type="Tables" />
+          <AssociationSet Name="fk_Calificaciones_Usuarios1" Association="Self.fk_Calificaciones_Usuarios1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="calificaciones" EntitySet="calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Comentarios_Usuarios1" Association="Self.fk_Comentarios_Usuarios1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="comentarios" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Deseos_Usuarios1" Association="Self.fk_Deseos_Usuarios1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="deseos" EntitySet="deseos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Fotos_Libros1" Association="Self.fk_Fotos_Libros1">
+            <End Role="libros" EntitySet="libros" />
+            <End Role="fotos" EntitySet="fotos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Interesados_Libros1" Association="Self.fk_Interesados_Libros1">
+            <End Role="libros" EntitySet="libros" />
+            <End Role="interesados" EntitySet="interesados" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Interesados_Usuarios" Association="Self.fk_Interesados_Usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="interesados" EntitySet="interesados" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Libros_Categorias1" Association="Self.fk_Libros_Categorias1">
+            <End Role="categorias" EntitySet="categorias" />
+            <End Role="libros" EntitySet="libros" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Libros_Usuarios1" Association="Self.fk_Libros_Usuarios1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="libros" EntitySet="libros" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Reportes_Administrador1" Association="Self.fk_Reportes_Administrador1">
+            <End Role="administradores" EntitySet="administradores" />
+            <End Role="reportes" EntitySet="reportes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Reportes_Usuarios1" Association="Self.fk_Reportes_Usuarios1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="reportes" EntitySet="reportes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="koobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="administradores">
+          <Key>
+            <PropertyRef Name="adm_codigo" />
+          </Key>
+          <Property Name="adm_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adm_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adm_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="reportes" Relationship="Self.fk_Reportes_Administrador1" FromRole="administradores" ToRole="reportes" />
+        </EntityType>
+        <EntityType Name="calificaciones">
+          <Key>
+            <PropertyRef Name="cal_codigo" />
+          </Key>
+          <Property Name="cal_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cal_valor" Type="Int32" Nullable="false" />
+          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fk_Calificaciones_Usuarios1" FromRole="calificaciones" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="categorias">
+          <Key>
+            <PropertyRef Name="cat_codigo" />
+          </Key>
+          <Property Name="cat_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="libros" Relationship="Self.fk_Libros_Categorias1" FromRole="categorias" ToRole="libros" />
+        </EntityType>
+        <EntityType Name="comentarios">
+          <Key>
+            <PropertyRef Name="com_codigo" />
+          </Key>
+          <Property Name="com_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="com_comentario" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fk_Comentarios_Usuarios1" FromRole="comentarios" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="deseos">
+          <Key>
+            <PropertyRef Name="des_codigo" />
+          </Key>
+          <Property Name="des_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <Property Name="lib_codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fk_Deseos_Usuarios1" FromRole="deseos" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="fotos">
+          <Key>
+            <PropertyRef Name="fot_codigo" />
+          </Key>
+          <Property Name="fot_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fot_foto1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="fot_foto2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fot_foto3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fot_foto4" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="fot_foto5" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="lib_codigo" Type="Int32" Nullable="false" />
+          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="libros" Relationship="Self.fk_Fotos_Libros1" FromRole="fotos" ToRole="libros" />
+        </EntityType>
+        <EntityType Name="interesados">
+          <Key>
+            <PropertyRef Name="int_codigo" />
+          </Key>
+          <Property Name="int_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_codigo_interesado" Type="Int32" Nullable="false" />
+          <Property Name="lib_codigo" Type="Int32" Nullable="false" />
+          <Property Name="usu_codigo_dueño" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="libros" Relationship="Self.fk_Interesados_Libros1" FromRole="interesados" ToRole="libros" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fk_Interesados_Usuarios" FromRole="interesados" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="libros">
+          <Key>
+            <PropertyRef Name="lib_codigo" />
+            <PropertyRef Name="usu_codigo" />
+          </Key>
+          <Property Name="lib_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lib_isbn" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lib_descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lib_ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <Property Name="cat_codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="categorias" Relationship="Self.fk_Libros_Categorias1" FromRole="libros" ToRole="categorias" />
+          <NavigationProperty Name="fotos" Relationship="Self.fk_Fotos_Libros1" FromRole="libros" ToRole="fotos" />
+          <NavigationProperty Name="interesados" Relationship="Self.fk_Interesados_Libros1" FromRole="libros" ToRole="interesados" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fk_Libros_Usuarios1" FromRole="libros" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="reportes">
+          <Key>
+            <PropertyRef Name="rep_codigo" />
+          </Key>
+          <Property Name="rep_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <Property Name="adm_codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="administradores" Relationship="Self.fk_Reportes_Administrador1" FromRole="reportes" ToRole="administradores" />
+          <NavigationProperty Name="usuarios" Relationship="Self.fk_Reportes_Usuarios1" FromRole="reportes" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="usu_codigo" />
+          </Key>
+          <Property Name="usu_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usu_telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="calificaciones" Relationship="Self.fk_Calificaciones_Usuarios1" FromRole="usuarios" ToRole="calificaciones" />
+          <NavigationProperty Name="comentarios" Relationship="Self.fk_Comentarios_Usuarios1" FromRole="usuarios" ToRole="comentarios" />
+          <NavigationProperty Name="deseos" Relationship="Self.fk_Deseos_Usuarios1" FromRole="usuarios" ToRole="deseos" />
+          <NavigationProperty Name="interesados" Relationship="Self.fk_Interesados_Usuarios" FromRole="usuarios" ToRole="interesados" />
+          <NavigationProperty Name="libros" Relationship="Self.fk_Libros_Usuarios1" FromRole="usuarios" ToRole="libros" />
+          <NavigationProperty Name="reportes" Relationship="Self.fk_Reportes_Usuarios1" FromRole="usuarios" ToRole="reportes" />
+        </EntityType>
+        <Association Name="fk_Reportes_Administrador1">
+          <End Role="administradores" Type="Self.administradores" Multiplicity="1" />
+          <End Role="reportes" Type="Self.reportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="administradores">
+              <PropertyRef Name="adm_codigo" />
+            </Principal>
+            <Dependent Role="reportes">
+              <PropertyRef Name="adm_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Calificaciones_Usuarios1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="calificaciones" Type="Self.calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="calificaciones">
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Libros_Categorias1">
+          <End Role="categorias" Type="Self.categorias" Multiplicity="1" />
+          <End Role="libros" Type="Self.libros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categorias">
+              <PropertyRef Name="cat_codigo" />
+            </Principal>
+            <Dependent Role="libros">
+              <PropertyRef Name="cat_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Comentarios_Usuarios1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="comentarios">
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Deseos_Usuarios1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="deseos" Type="Self.deseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="deseos">
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Fotos_Libros1">
+          <End Role="libros" Type="Self.libros" Multiplicity="1" />
+          <End Role="fotos" Type="Self.fotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="libros">
+              <PropertyRef Name="lib_codigo" />
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="fotos">
+              <PropertyRef Name="lib_codigo" />
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Interesados_Libros1">
+          <End Role="libros" Type="Self.libros" Multiplicity="1" />
+          <End Role="interesados" Type="Self.interesados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="libros">
+              <PropertyRef Name="lib_codigo" />
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="interesados">
+              <PropertyRef Name="lib_codigo" />
+              <PropertyRef Name="usu_codigo_dueño" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Interesados_Usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="interesados" Type="Self.interesados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="interesados">
+              <PropertyRef Name="usu_codigo_interesado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Libros_Usuarios1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="libros" Type="Self.libros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="libros">
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Reportes_Usuarios1">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="reportes" Type="Self.reportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="usu_codigo" />
+            </Principal>
+            <Dependent Role="reportes">
+              <PropertyRef Name="usu_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="koobEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="administradores" EntityType="Self.administradores" />
+          <EntitySet Name="calificaciones" EntityType="Self.calificaciones" />
+          <EntitySet Name="categorias" EntityType="Self.categorias" />
+          <EntitySet Name="comentarios" EntityType="Self.comentarios" />
+          <EntitySet Name="deseos" EntityType="Self.deseos" />
+          <EntitySet Name="fotos" EntityType="Self.fotos" />
+          <EntitySet Name="interesados" EntityType="Self.interesados" />
+          <EntitySet Name="libros" EntityType="Self.libros" />
+          <EntitySet Name="reportes" EntityType="Self.reportes" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <AssociationSet Name="fk_Reportes_Administrador1" Association="Self.fk_Reportes_Administrador1">
+            <End Role="administradores" EntitySet="administradores" />
+            <End Role="reportes" EntitySet="reportes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Calificaciones_Usuarios1" Association="Self.fk_Calificaciones_Usuarios1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="calificaciones" EntitySet="calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Libros_Categorias1" Association="Self.fk_Libros_Categorias1">
+            <End Role="categorias" EntitySet="categorias" />
+            <End Role="libros" EntitySet="libros" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Comentarios_Usuarios1" Association="Self.fk_Comentarios_Usuarios1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="comentarios" EntitySet="comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Deseos_Usuarios1" Association="Self.fk_Deseos_Usuarios1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="deseos" EntitySet="deseos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Fotos_Libros1" Association="Self.fk_Fotos_Libros1">
+            <End Role="libros" EntitySet="libros" />
+            <End Role="fotos" EntitySet="fotos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Interesados_Libros1" Association="Self.fk_Interesados_Libros1">
+            <End Role="libros" EntitySet="libros" />
+            <End Role="interesados" EntitySet="interesados" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Interesados_Usuarios" Association="Self.fk_Interesados_Usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="interesados" EntitySet="interesados" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Libros_Usuarios1" Association="Self.fk_Libros_Usuarios1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="libros" EntitySet="libros" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Reportes_Usuarios1" Association="Self.fk_Reportes_Usuarios1">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="reportes" EntitySet="reportes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="koobModelStoreContainer" CdmEntityContainer="koobEntities">
+          <EntitySetMapping Name="administradores">
+            <EntityTypeMapping TypeName="koobModel.administradores">
+              <MappingFragment StoreEntitySet="administradores">
+                <ScalarProperty Name="adm_codigo" ColumnName="adm_codigo" />
+                <ScalarProperty Name="adm_nombre" ColumnName="adm_nombre" />
+                <ScalarProperty Name="adm_password" ColumnName="adm_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="calificaciones">
+            <EntityTypeMapping TypeName="koobModel.calificaciones">
+              <MappingFragment StoreEntitySet="calificaciones">
+                <ScalarProperty Name="cal_codigo" ColumnName="cal_codigo" />
+                <ScalarProperty Name="cal_valor" ColumnName="cal_valor" />
+                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categorias">
+            <EntityTypeMapping TypeName="koobModel.categorias">
+              <MappingFragment StoreEntitySet="categorias">
+                <ScalarProperty Name="cat_codigo" ColumnName="cat_codigo" />
+                <ScalarProperty Name="cat_nombre" ColumnName="cat_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comentarios">
+            <EntityTypeMapping TypeName="koobModel.comentarios">
+              <MappingFragment StoreEntitySet="comentarios">
+                <ScalarProperty Name="com_codigo" ColumnName="com_codigo" />
+                <ScalarProperty Name="com_comentario" ColumnName="com_comentario" />
+                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deseos">
+            <EntityTypeMapping TypeName="koobModel.deseos">
+              <MappingFragment StoreEntitySet="deseos">
+                <ScalarProperty Name="des_codigo" ColumnName="des_codigo" />
+                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="lib_codigo" ColumnName="lib_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fotos">
+            <EntityTypeMapping TypeName="koobModel.fotos">
+              <MappingFragment StoreEntitySet="fotos">
+                <ScalarProperty Name="fot_codigo" ColumnName="fot_codigo" />
+                <ScalarProperty Name="fot_foto1" ColumnName="fot_foto1" />
+                <ScalarProperty Name="fot_foto2" ColumnName="fot_foto2" />
+                <ScalarProperty Name="fot_foto3" ColumnName="fot_foto3" />
+                <ScalarProperty Name="fot_foto4" ColumnName="fot_foto4" />
+                <ScalarProperty Name="fot_foto5" ColumnName="fot_foto5" />
+                <ScalarProperty Name="lib_codigo" ColumnName="lib_codigo" />
+                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="interesados">
+            <EntityTypeMapping TypeName="koobModel.interesados">
+              <MappingFragment StoreEntitySet="interesados">
+                <ScalarProperty Name="int_codigo" ColumnName="int_codigo" />
+                <ScalarProperty Name="usu_codigo_interesado" ColumnName="usu_codigo_interesado" />
+                <ScalarProperty Name="lib_codigo" ColumnName="lib_codigo" />
+                <ScalarProperty Name="usu_codigo_dueño" ColumnName="usu_codigo_dueño" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="libros">
+            <EntityTypeMapping TypeName="koobModel.libros">
+              <MappingFragment StoreEntitySet="libros">
+                <ScalarProperty Name="lib_codigo" ColumnName="lib_codigo" />
+                <ScalarProperty Name="lib_isbn" ColumnName="lib_isbn" />
+                <ScalarProperty Name="lib_descripcion" ColumnName="lib_descripcion" />
+                <ScalarProperty Name="lib_ubicacion" ColumnName="lib_ubicacion" />
+                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="cat_codigo" ColumnName="cat_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reportes">
+            <EntityTypeMapping TypeName="koobModel.reportes">
+              <MappingFragment StoreEntitySet="reportes">
+                <ScalarProperty Name="rep_codigo" ColumnName="rep_codigo" />
+                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="adm_codigo" ColumnName="adm_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="koobModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="usu_nombre" ColumnName="usu_nombre" />
+                <ScalarProperty Name="usu_username" ColumnName="usu_username" />
+                <ScalarProperty Name="usu_password" ColumnName="usu_password" />
+                <ScalarProperty Name="usu_correo" ColumnName="usu_correo" />
+                <ScalarProperty Name="usu_telefono" ColumnName="usu_telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
