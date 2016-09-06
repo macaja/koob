@@ -7,22 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Koob.AccesoADatos
+namespace Koob.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class fotos
+    public partial class comentarios
     {
-        public int fot_codigo { get; set; }
-        public byte[] fot_foto1 { get; set; }
-        public byte[] fot_foto2 { get; set; }
-        public byte[] fot_foto3 { get; set; }
-        public byte[] fot_foto4 { get; set; }
-        public byte[] fot_foto5 { get; set; }
-        public int lib_codigo { get; set; }
+        public int com_codigo { get; set; }
+        public string com_comentario { get; set; }
         public int usu_codigo { get; set; }
     
-        public virtual libros libros { get; set; }
+        public virtual usuarios usuarios { get; set; }
     }
 }

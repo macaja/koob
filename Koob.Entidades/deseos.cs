@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Koob.AccesoADatos
+namespace Koob.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class reportes
+    public partial class deseos
     {
-        public int rep_codigo { get; set; }
+        public int des_codigo { get; set; }
         public int usu_codigo { get; set; }
-        public int adm_codigo { get; set; }
+        public int lib_codigo { get; set; }
     
-        public virtual administradores administradores { get; set; }
         public virtual usuarios usuarios { get; set; }
     }
 }

@@ -7,32 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Koob.AccesoADatos
+namespace Koob.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class libros
+    public partial class categorias
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public libros()
+        public categorias()
         {
-            this.fotos = new HashSet<fotos>();
-            this.interesados = new HashSet<interesados>();
+            this.libros = new HashSet<libros>();
         }
     
-        public int lib_codigo { get; set; }
-        public string lib_isbn { get; set; }
-        public string lib_descripcion { get; set; }
-        public string lib_ubicacion { get; set; }
-        public int usu_codigo { get; set; }
         public int cat_codigo { get; set; }
+        public string cat_nombre { get; set; }
     
-        public virtual categorias categorias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<fotos> fotos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<interesados> interesados { get; set; }
-        public virtual usuarios usuarios { get; set; }
+        public virtual ICollection<libros> libros { get; set; }
     }
 }

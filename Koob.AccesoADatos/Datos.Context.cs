@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Koob.AccesoADatos
+namespace Koob.Entidades
 {
     using System;
     using System.Data.Entity;

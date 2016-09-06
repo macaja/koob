@@ -7,15 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Koob.AccesoADatos
+namespace Koob.Entidades
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class comentarios
+    public partial class calificaciones
     {
-        public int com_codigo { get; set; }
-        public string com_comentario { get; set; }
+        public int cal_codigo { get; set; }
+        public int cal_valor { get; set; }
         public int usu_codigo { get; set; }
     
         public virtual usuarios usuarios { get; set; }
