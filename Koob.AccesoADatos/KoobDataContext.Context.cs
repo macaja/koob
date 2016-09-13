@@ -13,10 +13,10 @@ namespace Koob.Entidades
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class koobEntities : DbContext
+    public partial class KoobEntities : DbContext
     {
-        public koobEntities()
-            : base("name=koobEntities")
+        public KoobEntities()
+            : base("name=KoobEntities")
         {
         }
     

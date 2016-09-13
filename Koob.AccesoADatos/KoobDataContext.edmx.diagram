@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9489a638cd534ff3bc036e3cd47f5c19" Name="Diagram1">
+        <EntityTypeShape EntityType="KoobModel.administradores" Width="1.5" PointX="3.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KoobModel.calificaciones" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KoobModel.categorias" Width="1.5" PointX="3.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="KoobModel.comentarios" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KoobModel.deseos" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KoobModel.fotos" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KoobModel.interesados" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KoobModel.libros" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KoobModel.reportes" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KoobModel.usuarios" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="KoobModel.reportes_fk_Reportes_Administrador1" ManuallyRouted="false" />
+        <AssociationConnector Association="KoobModel.calificaciones_fk_Calificaciones_Usuarios1" ManuallyRouted="false" />
+        <AssociationConnector Association="KoobModel.libros_fk_Libros_Categorias1" ManuallyRouted="false" />
+        <AssociationConnector Association="KoobModel.comentarios_fk_Comentarios_Usuarios1" ManuallyRouted="false" />
+        <AssociationConnector Association="KoobModel.deseos_fk_Deseos_Usuarios1" ManuallyRouted="false" />
+        <AssociationConnector Association="KoobModel.fotos_fk_Fotos_Libros1" ManuallyRouted="false" />
+        <AssociationConnector Association="KoobModel.interesados_fk_Interesados_Libros1" ManuallyRouted="false" />
+        <AssociationConnector Association="KoobModel.interesados_fk_Interesados_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="KoobModel.libros_fk_Libros_Usuarios1" ManuallyRouted="false" />
+        <AssociationConnector Association="KoobModel.reportes_fk_Reportes_Usuarios1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

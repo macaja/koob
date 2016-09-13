@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0FA1A1EC-C634-43C3-AA1E-5666459A31FB}</ProjectGuid>
+    <ProjectGuid>{E73E8925-6E4E-443E-9656-387F7E427D59}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Koob.Entidades</RootNamespace>
     <AssemblyName>Koob.Entidades</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -50,46 +50,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="administradores.cs">
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BDKoobDataContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="calificaciones.cs">
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="categorias.cs">
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="comentarios.cs">
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="deseos.cs">
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="fotos.cs">
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="interesados.cs">
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KoobDataContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="libros.cs">
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="reportes.cs">
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="usuarios.cs">
-      <DependentUpon>BDKoobDataContext.tt</DependentUpon>
+      <DependentUpon>KoobDataContext.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BDKoobDataContext.tt">
+    <Content Include="KoobDataContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BDKoobDataContext.cs</LastGenOutput>
+      <LastGenOutput>KoobDataContext.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
