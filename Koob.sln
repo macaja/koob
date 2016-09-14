@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.AccesoADatos", "Koob.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.Entidades", "Koob.Entidades\Koob.Entidades.csproj", "{E73E8925-6E4E-443E-9656-387F7E427D59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.Repositorio", "Koob.Repositorio\Koob.Repositorio.csproj", "{B1925EA2-0F1D-453D-8013-BD2BB88CCDFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.Dominio", "Koob.Dominio\Koob.Dominio.csproj", "{F49EC559-55AF-4D6B-A4EE-51EFF06AEF26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{E73E8925-6E4E-443E-9656-387F7E427D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E73E8925-6E4E-443E-9656-387F7E427D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E73E8925-6E4E-443E-9656-387F7E427D59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1925EA2-0F1D-453D-8013-BD2BB88CCDFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1925EA2-0F1D-453D-8013-BD2BB88CCDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1925EA2-0F1D-453D-8013-BD2BB88CCDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1925EA2-0F1D-453D-8013-BD2BB88CCDFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F49EC559-55AF-4D6B-A4EE-51EFF06AEF26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F49EC559-55AF-4D6B-A4EE-51EFF06AEF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F49EC559-55AF-4D6B-A4EE-51EFF06AEF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F49EC559-55AF-4D6B-A4EE-51EFF06AEF26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
