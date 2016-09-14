@@ -48,6 +48,11 @@ namespace Koob.Repositorio
             }
         }
 
+        public virtual IQueryable<TEntidad> ObtenerTodos()
+        {
+            return dbSet;
+        }
+
         public virtual TEntidad GetByID(object id)
         {
             return dbSet.Find(id);
@@ -77,6 +82,14 @@ namespace Koob.Repositorio
         {
             dbSet.Attach(entidadAModificar);
             koobContext.Entry(entidadAModificar).State = EntityState.Modified;
+        }
+        public virtual void Save()
+        {
+            koobContext.SaveChanges();
+        }
+        public void Dispose()
+        {
+            return;
         }
     }
     

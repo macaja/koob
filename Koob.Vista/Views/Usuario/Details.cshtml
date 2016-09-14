@@ -1,0 +1,66 @@
+﻿@model Koob.Dominio.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_telefono)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.usu_codigo}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
