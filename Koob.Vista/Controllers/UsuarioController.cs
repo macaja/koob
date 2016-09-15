@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using usuario = Koob.Dominio.Usuario;
 using Koob.Repositorio;
+using fachada = Koob.Vista.Models.RegisterViewModel;
 
 namespace Koob.Vista.Controllers
 {
@@ -37,13 +38,15 @@ namespace Koob.Vista.Controllers
         // POST: Account/Register /FALTA CONECTAR LA VISTA QUE GENERA MVC5 PREDETERMINDA
         // CON ESTE METODO, ya funciona pero accediendo desde otra vista mas rudimentaria.
         [HttpPost]
-        public ActionResult Create(usuario model)
+        public ActionResult Create(fachada model)
         {
             try
             {
                 usuarioRepository = new UsuarioRepository();
                 //model.usu_codigo = 1;
-                usuarioRepository.InsertarUsuario(model);
+                AutoMapper.Mapper.CreateMap<fachada, Dominio.Usuario>();
+               var usu = AutoMapper.Mapper.Map<Dominio.Usuario>(model);
+                usuarioRepository.InsertarUsuario(usu);
 
                 return RedirectToAction("Index");
             }

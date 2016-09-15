@@ -144,6 +144,8 @@ namespace Koob.Vista.Controllers
 
         //
         // POST: /Account/Register
+
+        /*
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -171,6 +173,8 @@ namespace Koob.Vista.Controllers
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
         }
+
+    */
 
         //
         // GET: /Account/ConfirmEmail
