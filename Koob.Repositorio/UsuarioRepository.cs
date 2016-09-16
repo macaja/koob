@@ -22,6 +22,24 @@ namespace Koob.Repositorio
             AutoMapper.Mapper.CreateMap<usuarios, dominio.Usuario>();
             return AutoMapper.Mapper.Map<dominio.Usuario>(usuario);
         }
+        public bool logueo(String email, string password)
+        {
+            bool isValid=false;
+            using (var context  = new KoobEntities())
+            {
+
+                var user = context.usuarios.FirstOrDefault(u => u.usu_correo == email);
+                if (user != null)
+                {
+                    if (user.usu_password == password) //Verificar password del usuario
+                    {
+                        isValid = true;
+                    }
+                }
+            }
+            return isValid;
+            
+        }
         public void InsertarUsuario(dominio.Usuario usuario)
         {
             AutoMapper.Mapper.CreateMap<dominio.Usuario, usuarios>();

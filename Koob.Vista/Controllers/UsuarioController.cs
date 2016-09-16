@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using usuario = Koob.Dominio.Usuario;
 using Koob.Repositorio;
 using fachada = Koob.Vista.Models.RegisterViewModel;
+using logInFacade = Koob.Vista.Models.LoginViewModel;
+using System.Web.Security;
 
 namespace Koob.Vista.Controllers
 {
@@ -14,6 +16,7 @@ namespace Koob.Vista.Controllers
         private UsuarioRepository usuarioRepository;
 
         // GET: Usuario
+        
         public ActionResult Index()
         {
             usuarioRepository = new UsuarioRepository();
@@ -22,6 +25,7 @@ namespace Koob.Vista.Controllers
         }
 
         // GET: Usuario/Details/5
+        
         public ActionResult Details(int id)
         {
             usuarioRepository = new UsuarioRepository();
@@ -29,15 +33,53 @@ namespace Koob.Vista.Controllers
             return View(empleado);
         }
 
+        [HttpGet]
+        public ActionResult logIn()
+        {
+            return View();
+        }
+
+        //POST: Usuario/LogIn
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(logInFacade login)
+        {
+            if (ModelState.IsValid) //Verificar que el modelo de datos sea valido en cuanto a la definición de las propiedades
+            {
+                usuarioRepository = new UsuarioRepository();
+                var model = usuarioRepository.logueo(login.usu_correo, login.usu_password);
+
+                if (model==true)//Verificar que el email y clave exista utilizando el método privado 
+                {
+                    FormsAuthentication.SetAuthCookie(login.usu_correo, false); //crea variable de usuario 
+                    return RedirectToAction("Index", "Home");  //dirigir controlador home vista Index una vez se a autenticado en el sistema
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Datos incorrectos"); //adicionar mensaje de error al model 
+                }
+            }
+            return View(login);
+        }
+
+        //GET: Usuario/LogOff
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+
         // GET: Usuario/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Account/Register /FALTA CONECTAR LA VISTA QUE GENERA MVC5 PREDETERMINDA
-        // CON ESTE METODO, ya funciona pero accediendo desde otra vista mas rudimentaria.
+        // POST: Usuario/Create
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(fachada model)
         {
             try
