@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<Koob.Dominio.Usuario>
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
 
-@{
+
     ViewBag.Title = "Index";
-}
+
 
 <h2>Index</h2>
 
@@ -32,7 +35,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.usu_codigo)
@@ -61,3 +65,8 @@
 }
 
 </table>
+}
+else
+{
+    Response.Redirect("~/Usuario/Login");
+}
