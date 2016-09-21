@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9489a638cd534ff3bc036e3cd47f5c19" Name="Diagram1">
+      <Diagram DiagramId="fa860b6ce388460781dcae13d07c0442" Name="Diagram1">
         <EntityTypeShape EntityType="KoobModel.administradores" Width="1.5" PointX="3.75" PointY="14.875" IsExpanded="true" />
         <EntityTypeShape EntityType="KoobModel.calificaciones" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KoobModel.categorias" Width="1.5" PointX="3.75" PointY="4" IsExpanded="true" />
@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="KoobModel.interesados" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="KoobModel.libros" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KoobModel.reportes" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KoobModel.usuarios" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KoobModel.usuarios" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
         <AssociationConnector Association="KoobModel.reportes_fk_Reportes_Administrador1" ManuallyRouted="false" />
         <AssociationConnector Association="KoobModel.calificaciones_fk_Calificaciones_Usuarios1" ManuallyRouted="false" />
         <AssociationConnector Association="KoobModel.libros_fk_Libros_Categorias1" ManuallyRouted="false" />

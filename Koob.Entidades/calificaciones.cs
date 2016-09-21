@@ -16,7 +16,7 @@ namespace Koob.Entidades
     {
         public int cal_codigo { get; set; }
         public int cal_valor { get; set; }
-        public int usu_codigo { get; set; }
+        public string usu_email { get; set; }
     
         public virtual usuarios usuarios { get; set; }
     }

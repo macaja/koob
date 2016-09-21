@@ -15,7 +15,7 @@ namespace Koob.Entidades
     public partial class reportes
     {
         public int rep_codigo { get; set; }
-        public int usu_codigo { get; set; }
+        public string usu_email { get; set; }
         public int adm_codigo { get; set; }
     
         public virtual administradores administradores { get; set; }

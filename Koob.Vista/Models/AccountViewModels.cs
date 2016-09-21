@@ -51,7 +51,7 @@ namespace Koob.Vista.Models
         [Required]
         [Display(Name = "Correo electrónico")]
         [EmailAddress]
-        public string usu_correo { get; set; }
+        public string usu_email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -70,15 +70,11 @@ namespace Koob.Vista.Models
         [Display(Name = "Nombres")]
         public string usu_nombre { get; set; }
 
-        [Required]
-        [StringLength(15)]
-        [Display(Name = "Nombre de usuario")]
-        public string usu_username { get; set; }
 
         [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
-        public string usu_correo { get; set; }
+        public string usu_email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]

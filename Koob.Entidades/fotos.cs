@@ -21,7 +21,7 @@ namespace Koob.Entidades
         public byte[] fot_foto4 { get; set; }
         public byte[] fot_foto5 { get; set; }
         public int lib_codigo { get; set; }
-        public int usu_codigo { get; set; }
+        public string usu_email { get; set; }
     
         public virtual libros libros { get; set; }
     }

@@ -23,9 +23,17 @@ namespace Koob.Vista.Controllers
             var usuarios = usuarioRepository.ObtenerUsuarios();
             return View(usuarios);
         }
+        // GET: Usuario
+
+        public ActionResult Libros()
+        {
+            usuarioRepository = new UsuarioRepository();
+            var usuarios = usuarioRepository.ObtenerUsuarios();
+            return View(usuarios);
+        }
 
         // GET: Usuario/Details/5
-        
+
         public ActionResult Details(int id)
         {
             usuarioRepository = new UsuarioRepository();
@@ -47,11 +55,11 @@ namespace Koob.Vista.Controllers
             if (ModelState.IsValid) //Verificar que el modelo de datos sea valido en cuanto a la definición de las propiedades
             {
                 usuarioRepository = new UsuarioRepository();
-                var model = usuarioRepository.logueo(login.usu_correo, login.usu_password);
+                var model = usuarioRepository.logueo(login.usu_email, login.usu_password);
 
                 if (model==true)//Verificar que el email y clave exista utilizando el método privado 
                 {
-                    FormsAuthentication.SetAuthCookie(login.usu_correo, false); //crea variable de usuario 
+                    FormsAuthentication.SetAuthCookie(login.usu_email, false); //crea variable de usuario 
                     return RedirectToAction("Index", "Home");  //dirigir controlador home vista Index una vez se a autenticado en el sistema
                 }
                 else

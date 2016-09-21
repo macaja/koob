@@ -15,7 +15,7 @@ namespace Koob.Entidades
     public partial class deseos
     {
         public int des_codigo { get; set; }
-        public int usu_codigo { get; set; }
+        public string usu_email { get; set; }
         public int lib_codigo { get; set; }
     
         public virtual usuarios usuarios { get; set; }

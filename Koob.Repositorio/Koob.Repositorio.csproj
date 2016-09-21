@@ -58,21 +58,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FotosRepository.cs" />
+    <Compile Include="LibrosRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioGenerico.cs" />
     <Compile Include="UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Koob.AccesoADatos\Koob.AccesoADatos.csproj">
-      <Project>{d39e8643-05a5-4bd3-9a76-13d338813a66}</Project>
-      <Name>Koob.AccesoADatos</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Koob.Dominio\Koob.Dominio.csproj">
       <Project>{f49ec559-55af-4d6b-a4ee-51eff06aef26}</Project>
       <Name>Koob.Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Koob.Entidades\Koob.Entidades.csproj">
-      <Project>{e73e8925-6e4e-443e-9656-387f7e427d59}</Project>
+      <Project>{8e2402ed-1900-43ed-8fbc-3cdbe3a8f09c}</Project>
       <Name>Koob.Entidades</Name>
     </ProjectReference>
   </ItemGroup>

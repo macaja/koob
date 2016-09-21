@@ -19,7 +19,7 @@
           </Key>
           <Property Name="cal_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cal_valor" Type="int" Nullable="false" />
-          <Property Name="usu_codigo" Type="int" Nullable="false" />
+          <Property Name="usu_email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="categorias">
           <Key>
@@ -34,14 +34,14 @@
           </Key>
           <Property Name="com_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="com_comentario" Type="nvarchar" MaxLength="2000" Nullable="false" />
-          <Property Name="usu_codigo" Type="int" Nullable="false" />
+          <Property Name="usu_email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="deseos">
           <Key>
             <PropertyRef Name="des_codigo" />
           </Key>
           <Property Name="des_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="usu_codigo" Type="int" Nullable="false" />
+          <Property Name="usu_email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="lib_codigo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="fotos">
@@ -55,27 +55,27 @@
           <Property Name="fot_foto4" Type="varbinary(max)" />
           <Property Name="fot_foto5" Type="varbinary(max)" />
           <Property Name="lib_codigo" Type="int" Nullable="false" />
-          <Property Name="usu_codigo" Type="int" Nullable="false" />
+          <Property Name="usu_email" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="interesados">
           <Key>
             <PropertyRef Name="int_codigo" />
           </Key>
           <Property Name="int_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="usu_codigo_interesado" Type="int" Nullable="false" />
+          <Property Name="usu_email_interesado" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="lib_codigo" Type="int" Nullable="false" />
-          <Property Name="usu_codigo_dueño" Type="int" Nullable="false" />
+          <Property Name="usu_email_dueño" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="libros">
           <Key>
             <PropertyRef Name="lib_codigo" />
-            <PropertyRef Name="usu_codigo" />
+            <PropertyRef Name="usu_email" />
           </Key>
           <Property Name="lib_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="lib_isbn" Type="nvarchar" MaxLength="45" Nullable="false" />
           <Property Name="lib_descripcion" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="lib_ubicacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="usu_codigo" Type="int" Nullable="false" />
+          <Property Name="usu_email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="cat_codigo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="reportes">
@@ -83,18 +83,16 @@
             <PropertyRef Name="rep_codigo" />
           </Key>
           <Property Name="rep_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="usu_codigo" Type="int" Nullable="false" />
+          <Property Name="usu_email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="adm_codigo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="usuarios">
           <Key>
-            <PropertyRef Name="usu_codigo" />
+            <PropertyRef Name="usu_email" />
           </Key>
-          <Property Name="usu_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="usu_nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="usu_username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="usu_password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="usu_correo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="usu_telefono" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <Association Name="calificaciones$fk_Calificaciones_Usuarios1">
@@ -102,10 +100,10 @@
           <End Role="calificaciones" Type="Self.calificaciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="calificaciones">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -114,10 +112,10 @@
           <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="comentarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -126,10 +124,10 @@
           <End Role="deseos" Type="Self.deseos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="deseos">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -139,11 +137,11 @@
           <ReferentialConstraint>
             <Principal Role="libros">
               <PropertyRef Name="lib_codigo" />
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="fotos">
               <PropertyRef Name="lib_codigo" />
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -153,11 +151,11 @@
           <ReferentialConstraint>
             <Principal Role="libros">
               <PropertyRef Name="lib_codigo" />
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="interesados">
               <PropertyRef Name="lib_codigo" />
-              <PropertyRef Name="usu_codigo_dueño" />
+              <PropertyRef Name="usu_email_dueño" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -166,10 +164,10 @@
           <End Role="interesados" Type="Self.interesados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="interesados">
-              <PropertyRef Name="usu_codigo_interesado" />
+              <PropertyRef Name="usu_email_interesado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -190,10 +188,10 @@
           <End Role="libros" Type="Self.libros" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="libros">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -214,10 +212,10 @@
           <End Role="reportes" Type="Self.reportes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="reportes">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -293,7 +291,7 @@
           </Key>
           <Property Name="cal_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cal_valor" Type="Int32" Nullable="false" />
-          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <Property Name="usu_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="usuarios" Relationship="Self.calificaciones_fk_Calificaciones_Usuarios1" FromRole="calificaciones" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="categorias">
@@ -310,7 +308,7 @@
           </Key>
           <Property Name="com_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="com_comentario" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <Property Name="usu_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="usuarios" Relationship="Self.comentarios_fk_Comentarios_Usuarios1" FromRole="comentarios" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="deseos">
@@ -318,7 +316,7 @@
             <PropertyRef Name="des_codigo" />
           </Key>
           <Property Name="des_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <Property Name="usu_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="lib_codigo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="usuarios" Relationship="Self.deseos_fk_Deseos_Usuarios1" FromRole="deseos" ToRole="usuarios" />
         </EntityType>
@@ -333,7 +331,7 @@
           <Property Name="fot_foto4" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="fot_foto5" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="lib_codigo" Type="Int32" Nullable="false" />
-          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <Property Name="usu_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="libros" Relationship="Self.fotos_fk_Fotos_Libros1" FromRole="fotos" ToRole="libros" />
         </EntityType>
         <EntityType Name="interesados">
@@ -341,22 +339,22 @@
             <PropertyRef Name="int_codigo" />
           </Key>
           <Property Name="int_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="usu_codigo_interesado" Type="Int32" Nullable="false" />
+          <Property Name="usu_email_interesado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="lib_codigo" Type="Int32" Nullable="false" />
-          <Property Name="usu_codigo_dueño" Type="Int32" Nullable="false" />
+          <Property Name="usu_email_dueño" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="libros" Relationship="Self.interesados_fk_Interesados_Libros1" FromRole="interesados" ToRole="libros" />
           <NavigationProperty Name="usuarios" Relationship="Self.interesados_fk_Interesados_Usuarios" FromRole="interesados" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="libros">
           <Key>
             <PropertyRef Name="lib_codigo" />
-            <PropertyRef Name="usu_codigo" />
+            <PropertyRef Name="usu_email" />
           </Key>
           <Property Name="lib_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="lib_isbn" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="lib_descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="lib_ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <Property Name="usu_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="cat_codigo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="categorias" Relationship="Self.libros_fk_Libros_Categorias1" FromRole="libros" ToRole="categorias" />
           <NavigationProperty Name="fotos" Relationship="Self.fotos_fk_Fotos_Libros1" FromRole="libros" ToRole="fotos" />
@@ -368,20 +366,18 @@
             <PropertyRef Name="rep_codigo" />
           </Key>
           <Property Name="rep_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="usu_codigo" Type="Int32" Nullable="false" />
+          <Property Name="usu_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="adm_codigo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="administradores" Relationship="Self.reportes_fk_Reportes_Administrador1" FromRole="reportes" ToRole="administradores" />
           <NavigationProperty Name="usuarios" Relationship="Self.reportes_fk_Reportes_Usuarios1" FromRole="reportes" ToRole="usuarios" />
         </EntityType>
         <EntityType Name="usuarios">
           <Key>
-            <PropertyRef Name="usu_codigo" />
+            <PropertyRef Name="usu_email" />
           </Key>
-          <Property Name="usu_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="usu_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="usu_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="usu_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="usu_correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="usu_telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="calificaciones" Relationship="Self.calificaciones_fk_Calificaciones_Usuarios1" FromRole="usuarios" ToRole="calificaciones" />
           <NavigationProperty Name="comentarios" Relationship="Self.comentarios_fk_Comentarios_Usuarios1" FromRole="usuarios" ToRole="comentarios" />
@@ -407,10 +403,10 @@
           <End Role="calificaciones" Type="Self.calificaciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="calificaciones">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -431,10 +427,10 @@
           <End Role="comentarios" Type="Self.comentarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="comentarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -443,10 +439,10 @@
           <End Role="deseos" Type="Self.deseos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="deseos">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -456,11 +452,11 @@
           <ReferentialConstraint>
             <Principal Role="libros">
               <PropertyRef Name="lib_codigo" />
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="fotos">
               <PropertyRef Name="lib_codigo" />
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -470,11 +466,11 @@
           <ReferentialConstraint>
             <Principal Role="libros">
               <PropertyRef Name="lib_codigo" />
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="interesados">
               <PropertyRef Name="lib_codigo" />
-              <PropertyRef Name="usu_codigo_dueño" />
+              <PropertyRef Name="usu_email_dueño" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -483,10 +479,10 @@
           <End Role="interesados" Type="Self.interesados" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="interesados">
-              <PropertyRef Name="usu_codigo_interesado" />
+              <PropertyRef Name="usu_email_interesado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -495,10 +491,10 @@
           <End Role="libros" Type="Self.libros" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="libros">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -507,10 +503,10 @@
           <End Role="reportes" Type="Self.reportes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Principal>
             <Dependent Role="reportes">
-              <PropertyRef Name="usu_codigo" />
+              <PropertyRef Name="usu_email" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -586,7 +582,7 @@
               <MappingFragment StoreEntitySet="calificaciones">
                 <ScalarProperty Name="cal_codigo" ColumnName="cal_codigo" />
                 <ScalarProperty Name="cal_valor" ColumnName="cal_valor" />
-                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="usu_email" ColumnName="usu_email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -603,7 +599,7 @@
               <MappingFragment StoreEntitySet="comentarios">
                 <ScalarProperty Name="com_codigo" ColumnName="com_codigo" />
                 <ScalarProperty Name="com_comentario" ColumnName="com_comentario" />
-                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="usu_email" ColumnName="usu_email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -611,7 +607,7 @@
             <EntityTypeMapping TypeName="KoobModel.deseos">
               <MappingFragment StoreEntitySet="deseos">
                 <ScalarProperty Name="des_codigo" ColumnName="des_codigo" />
-                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="usu_email" ColumnName="usu_email" />
                 <ScalarProperty Name="lib_codigo" ColumnName="lib_codigo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -626,7 +622,7 @@
                 <ScalarProperty Name="fot_foto4" ColumnName="fot_foto4" />
                 <ScalarProperty Name="fot_foto5" ColumnName="fot_foto5" />
                 <ScalarProperty Name="lib_codigo" ColumnName="lib_codigo" />
-                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="usu_email" ColumnName="usu_email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -634,9 +630,9 @@
             <EntityTypeMapping TypeName="KoobModel.interesados">
               <MappingFragment StoreEntitySet="interesados">
                 <ScalarProperty Name="int_codigo" ColumnName="int_codigo" />
-                <ScalarProperty Name="usu_codigo_interesado" ColumnName="usu_codigo_interesado" />
+                <ScalarProperty Name="usu_email_interesado" ColumnName="usu_email_interesado" />
                 <ScalarProperty Name="lib_codigo" ColumnName="lib_codigo" />
-                <ScalarProperty Name="usu_codigo_dueño" ColumnName="usu_codigo_dueño" />
+                <ScalarProperty Name="usu_email_dueño" ColumnName="usu_email_dueño" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -647,7 +643,7 @@
                 <ScalarProperty Name="lib_isbn" ColumnName="lib_isbn" />
                 <ScalarProperty Name="lib_descripcion" ColumnName="lib_descripcion" />
                 <ScalarProperty Name="lib_ubicacion" ColumnName="lib_ubicacion" />
-                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="usu_email" ColumnName="usu_email" />
                 <ScalarProperty Name="cat_codigo" ColumnName="cat_codigo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -656,7 +652,7 @@
             <EntityTypeMapping TypeName="KoobModel.reportes">
               <MappingFragment StoreEntitySet="reportes">
                 <ScalarProperty Name="rep_codigo" ColumnName="rep_codigo" />
-                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="usu_email" ColumnName="usu_email" />
                 <ScalarProperty Name="adm_codigo" ColumnName="adm_codigo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -664,11 +660,9 @@
           <EntitySetMapping Name="usuarios">
             <EntityTypeMapping TypeName="KoobModel.usuarios">
               <MappingFragment StoreEntitySet="usuarios">
-                <ScalarProperty Name="usu_codigo" ColumnName="usu_codigo" />
+                <ScalarProperty Name="usu_email" ColumnName="usu_email" />
                 <ScalarProperty Name="usu_nombre" ColumnName="usu_nombre" />
-                <ScalarProperty Name="usu_username" ColumnName="usu_username" />
                 <ScalarProperty Name="usu_password" ColumnName="usu_password" />
-                <ScalarProperty Name="usu_correo" ColumnName="usu_correo" />
                 <ScalarProperty Name="usu_telefono" ColumnName="usu_telefono" />
               </MappingFragment>
             </EntityTypeMapping>

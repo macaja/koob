@@ -9,13 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.TDDTests", "Koob.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.Servicios", "Koob.Servicios\Koob.Servicios.csproj", "{79180B15-F91F-45D4-B57F-2BACD7D6A948}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.AccesoADatos", "Koob.AccesoADatos\Koob.AccesoADatos.csproj", "{D39E8643-05A5-4BD3-9A76-13D338813A66}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.Entidades", "Koob.Entidades\Koob.Entidades.csproj", "{E73E8925-6E4E-443E-9656-387F7E427D59}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.Repositorio", "Koob.Repositorio\Koob.Repositorio.csproj", "{B1925EA2-0F1D-453D-8013-BD2BB88CCDFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.Dominio", "Koob.Dominio\Koob.Dominio.csproj", "{F49EC559-55AF-4D6B-A4EE-51EFF06AEF26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.AccesoADatos", "Koob.AccesoADatos\Koob.AccesoADatos.csproj", "{4CACF3C3-052A-40AA-9F20-F12DD259D30E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Koob.Entidades", "Koob.Entidades\Koob.Entidades.csproj", "{8E2402ED-1900-43ED-8FBC-3CDBE3A8F09C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +35,6 @@ Global
 		{79180B15-F91F-45D4-B57F-2BACD7D6A948}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79180B15-F91F-45D4-B57F-2BACD7D6A948}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79180B15-F91F-45D4-B57F-2BACD7D6A948}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D39E8643-05A5-4BD3-9A76-13D338813A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D39E8643-05A5-4BD3-9A76-13D338813A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D39E8643-05A5-4BD3-9A76-13D338813A66}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D39E8643-05A5-4BD3-9A76-13D338813A66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E73E8925-6E4E-443E-9656-387F7E427D59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E73E8925-6E4E-443E-9656-387F7E427D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E73E8925-6E4E-443E-9656-387F7E427D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E73E8925-6E4E-443E-9656-387F7E427D59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B1925EA2-0F1D-453D-8013-BD2BB88CCDFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1925EA2-0F1D-453D-8013-BD2BB88CCDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1925EA2-0F1D-453D-8013-BD2BB88CCDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +43,14 @@ Global
 		{F49EC559-55AF-4D6B-A4EE-51EFF06AEF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F49EC559-55AF-4D6B-A4EE-51EFF06AEF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F49EC559-55AF-4D6B-A4EE-51EFF06AEF26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CACF3C3-052A-40AA-9F20-F12DD259D30E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CACF3C3-052A-40AA-9F20-F12DD259D30E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CACF3C3-052A-40AA-9F20-F12DD259D30E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CACF3C3-052A-40AA-9F20-F12DD259D30E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E2402ED-1900-43ED-8FBC-3CDBE3A8F09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E2402ED-1900-43ED-8FBC-3CDBE3A8F09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E2402ED-1900-43ED-8FBC-3CDBE3A8F09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E2402ED-1900-43ED-8FBC-3CDBE3A8F09C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

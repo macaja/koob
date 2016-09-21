@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D39E8643-05A5-4BD3-9A76-13D338813A66}</ProjectGuid>
+    <ProjectGuid>{4CACF3C3-052A-40AA-9F20-F12DD259D30E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Koob.AccesoADatos</RootNamespace>
     <AssemblyName>Koob.AccesoADatos</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -89,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Koob.Entidades\Koob.Entidades.csproj">
-      <Project>{e73e8925-6e4e-443e-9656-387f7e427d59}</Project>
+      <Project>{8e2402ed-1900-43ed-8fbc-3cdbe3a8f09c}</Project>
       <Name>Koob.Entidades</Name>
     </ProjectReference>
   </ItemGroup>

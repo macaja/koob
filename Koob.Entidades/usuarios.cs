@@ -25,11 +25,9 @@ namespace Koob.Entidades
             this.reportes = new HashSet<reportes>();
         }
     
-        public int usu_codigo { get; set; }
+        public string usu_email { get; set; }
         public string usu_nombre { get; set; }
-        public string usu_username { get; set; }
         public string usu_password { get; set; }
-        public string usu_correo { get; set; }
         public string usu_telefono { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

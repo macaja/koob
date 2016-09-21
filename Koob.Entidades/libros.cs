@@ -25,7 +25,7 @@ namespace Koob.Entidades
         public string lib_isbn { get; set; }
         public string lib_descripcion { get; set; }
         public string lib_ubicacion { get; set; }
-        public int usu_codigo { get; set; }
+        public string usu_email { get; set; }
         public int cat_codigo { get; set; }
     
         public virtual categorias categorias { get; set; }
