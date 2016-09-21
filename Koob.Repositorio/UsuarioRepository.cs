@@ -28,7 +28,7 @@ namespace Koob.Repositorio
             using (var context  = new KoobEntities())
             {
 
-                var user = context.usuarios.FirstOrDefault(u => u.usu_correo == email);
+                var user = context.usuarios.FirstOrDefault(u => u.usu_email == email);
                 if (user != null)
                 {
                     if (user.usu_password == password) //Verificar password del usuario

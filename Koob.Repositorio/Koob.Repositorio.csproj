@@ -64,6 +64,10 @@
     <Compile Include="UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Koob.AccesoADatos\Koob.AccesoADatos.csproj">
+      <Project>{4cacf3c3-052a-40aa-9f20-f12dd259d30e}</Project>
+      <Name>Koob.AccesoADatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Koob.Dominio\Koob.Dominio.csproj">
       <Project>{f49ec559-55af-4d6b-a4ee-51eff06aef26}</Project>
       <Name>Koob.Dominio</Name>

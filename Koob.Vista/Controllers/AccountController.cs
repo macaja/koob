@@ -76,7 +76,7 @@ namespace Koob.Vista.Controllers
             // No cuenta los errores de inicio de sesión para el bloqueo de la cuenta
             // Para permitir que los errores de contraseña desencadenen el bloqueo de la cuenta, cambie a shouldLockout: true
 
-            var result = await SignInManager.PasswordSignInAsync(model.usu_correo, model.usu_password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.usu_email, model.usu_password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
