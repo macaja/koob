@@ -14,20 +14,16 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.usu_codigo)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.usu_nombre)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.usu_username)
-        </th>
+      
         <th>
             @Html.DisplayNameFor(model => model.usu_password)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.usu_correo)
+            @Html.DisplayNameFor(model => model.usu_email)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.usu_telefono)
@@ -38,20 +34,16 @@
 @foreach (var item in Model)
 {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.usu_codigo)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.usu_nombre)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.usu_username)
-        </td>
+      
         <td>
             @Html.DisplayFor(modelItem => item.usu_password)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.usu_correo)
+            @Html.DisplayFor(modelItem => item.usu_email)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.usu_telefono)
