@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriasRepository.cs" />
     <Compile Include="FotosRepository.cs" />
     <Compile Include="LibrosRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

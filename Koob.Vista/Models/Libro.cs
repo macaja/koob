@@ -17,14 +17,9 @@ namespace Koob.Vista.Models
         [StringLength(100, ErrorMessage = "Debe contener una breve {0} de al menos {2} palabras.", MinimumLength = 15)]
         [Display(Name = "Descripcion")]
         public string lib_descripcion { get; set; }
-        [Required]
-        [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
-        [Display(Name = "Ubicacion")]
-        public string lib_ubicacion { get; set; }
-        public int usu_codigo { get; set; }
-        [Required]
+        public string usu_email { get; set; }
         [Display(Name = "Categoria")]
         public int cat_codigo { get; set; }
-        public List<Foto> fotos { get; set; }
+        
     }
 }

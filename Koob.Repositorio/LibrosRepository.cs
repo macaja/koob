@@ -10,7 +10,7 @@ namespace Koob.Repositorio
 {
     public class LibrosRepository: RepositorioGenerico<libros>
     {
-        public List<dominio.Libro> ObtenerUsuarios()
+        public List<dominio.Libro> ObtenerLibros()
         {
             AutoMapper.Mapper.CreateMap<libros, dominio.Libro>();
             return new List<dominio.Libro>(ObtenerTodos().AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Libro>)).ToList();
@@ -22,7 +22,7 @@ namespace Koob.Repositorio
             AutoMapper.Mapper.CreateMap<libros, dominio.Libro>();
             return AutoMapper.Mapper.Map<dominio.Libro>(libro);
         }
-        public void InsertarUsuario(dominio.Libro libro)
+        public void InsertarLibro(dominio.Libro libro)
         {
             AutoMapper.Mapper.CreateMap<dominio.Libro, libros>();
             var lib = AutoMapper.Mapper.Map<libros>(libro);

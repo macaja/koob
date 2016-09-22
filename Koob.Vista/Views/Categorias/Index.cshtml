@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Koob.Dominio.Categoria>
+
+
+<select>
+
+        @foreach (var item in Model)
+        {
+            <option value="@Html.DisplayFor(modelItem => item.cat_codigo)">@Html.DisplayFor(modelItem => item.cat_nombre)</option>
+               
+        }
+
+</select>

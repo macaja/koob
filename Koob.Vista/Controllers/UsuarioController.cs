@@ -5,9 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using usuario = Koob.Dominio.Usuario;
 using Koob.Repositorio;
-using fachada = Koob.Vista.Models.RegisterViewModel;
+using fachada = Koob.Vista.Models;
 using logInFacade = Koob.Vista.Models.LoginViewModel;
 using System.Web.Security;
+using Microsoft.AspNet.Identity;
 
 namespace Koob.Vista.Controllers
 {
@@ -88,15 +89,35 @@ namespace Koob.Vista.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(fachada model)
+        public ActionResult Create(fachada.RegisterViewModel model)
         {
             try
             {
                 usuarioRepository = new UsuarioRepository();
                 //model.usu_codigo = 1;
-                AutoMapper.Mapper.CreateMap<fachada, Dominio.Usuario>();
+                AutoMapper.Mapper.CreateMap<fachada.RegisterViewModel, Dominio.Usuario>();
                var usu = AutoMapper.Mapper.Map<Dominio.Usuario>(model);
                 usuarioRepository.InsertarUsuario(usu);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(model);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Ingresar(fachada.Libro model)
+        {
+            try
+            {
+                //var t = User.Identity.Name;
+                //model.usu_email = t;
+                LibrosRepository librosRepository = new LibrosRepository();
+                AutoMapper.Mapper.CreateMap<fachada.Libro, Dominio.Libro>();
+                var lib = AutoMapper.Mapper.Map<Dominio.Libro>(model);
+                librosRepository.InsertarLibro(lib);
 
                 return RedirectToAction("Index");
             }
