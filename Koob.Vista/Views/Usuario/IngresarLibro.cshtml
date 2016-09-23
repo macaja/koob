@@ -1,25 +1,27 @@
 ﻿@model Koob.Vista.Models.Libro
-
-@{
-    ViewBag.Title = "Ingresar";
-}
-
-<h2>Ingresar</h2>
-
-
-@using (Html.BeginForm()) 
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
 {
+
+    ViewBag.Title = "IngresarLibro";
+
+
+<h2>Ingresar Libro</h2>
+
+
+    using (Html.BeginForm())
+    {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Libro</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.lib_codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.lib_isbn, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.lib_codigo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.lib_codigo, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.lib_isbn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.lib_isbn, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -32,10 +34,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.usu_email, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.lib_ubicacion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.usu_email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.usu_email, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.lib_ubicacion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.lib_ubicacion, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -53,11 +55,16 @@
             </div>
         </div>
     </div>
-}
+    }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+}
+else
+{
+    Response.Redirect("~/Usuario/Login");
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

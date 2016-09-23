@@ -17,20 +17,18 @@ namespace Koob.Vista.Controllers
         private UsuarioRepository usuarioRepository;
 
         // GET: Usuario
-        
         public ActionResult Index()
         {
             usuarioRepository = new UsuarioRepository();
             var usuarios = usuarioRepository.ObtenerUsuarios();
             return View(usuarios);
         }
-        // GET: Usuario
-
+        
+        // GET: Libros del usuario
         public ActionResult Libros()
         {
-            usuarioRepository = new UsuarioRepository();
-            var usuarios = usuarioRepository.ObtenerUsuarios();
-            return View(usuarios);
+            
+            return View();
         }
 
         // GET: Usuario/Details/5
@@ -106,20 +104,26 @@ namespace Koob.Vista.Controllers
                 return View(model);
             }
         }
+        // Get: Ingresar
+        public ActionResult IngresarLibro()
+        {
+
+            return View();
+        }
 
         [HttpPost]
-        public ActionResult Ingresar(fachada.Libro model)
+        public ActionResult IngresarLibro(fachada.Libro model)
         {
             try
             {
-                //var t = User.Identity.Name;
-                //model.usu_email = t;
+                var t = User.Identity.Name;
                 LibrosRepository librosRepository = new LibrosRepository();
                 AutoMapper.Mapper.CreateMap<fachada.Libro, Dominio.Libro>();
                 var lib = AutoMapper.Mapper.Map<Dominio.Libro>(model);
+                lib.usu_email = t;
                 librosRepository.InsertarLibro(lib);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Libro");
             }
             catch
             {

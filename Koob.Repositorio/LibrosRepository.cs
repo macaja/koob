@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Koob.Entidades;
 using dominio = Koob.Dominio;
+using System.Data.Entity;
 
 namespace Koob.Repositorio
 {
@@ -12,6 +13,7 @@ namespace Koob.Repositorio
     {
         public List<dominio.Libro> ObtenerLibros()
         {
+
             AutoMapper.Mapper.CreateMap<libros, dominio.Libro>();
             return new List<dominio.Libro>(ObtenerTodos().AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Libro>)).ToList();
         }
@@ -29,5 +31,7 @@ namespace Koob.Repositorio
             Insert(lib);
             Save();
         }
+        //public List<dominio.Libro> misLibros(String email)
+        //{}
     }
 }
