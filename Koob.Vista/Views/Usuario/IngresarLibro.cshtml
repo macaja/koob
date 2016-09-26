@@ -43,10 +43,15 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.cat_codigo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cat_codigo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cat_codigo, "", new { @class = "text-danger" })
-            </div>
+    <div class="col-md-10">
+
+            
+              
+              @*  @Html.EditorFor(model => model.cat_codigo, new { htmlAttributes = new { @class = "form-control" } }) *@
+                @Html.DropDownList("cat_codigo", (IEnumerable<SelectListItem>)ViewData["ListItems"], htmlAttributes: new { @class = "btn btn-default dropdown-toggle" })
+                
+                
+        </div> 
         </div>
 
         <div class="form-group">

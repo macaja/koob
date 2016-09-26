@@ -15,5 +15,6 @@ namespace Koob.Repositorio
             AutoMapper.Mapper.CreateMap<categorias, dominio.Categoria>();
             return new List<dominio.Categoria>(ObtenerTodos().AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Categoria>)).ToList();
         }
+
     }
 }

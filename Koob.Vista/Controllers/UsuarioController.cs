@@ -107,7 +107,16 @@ namespace Koob.Vista.Controllers
         // Get: Ingresar
         public ActionResult IngresarLibro()
         {
+            CategoriasRepository categoriasRepository = new CategoriasRepository();
+            var categorias = categoriasRepository.ObtenerCategorias();
+            var categoriasSelect = from cat in categorias
+                                   select new SelectListItem()
+                                   {
+                                       Text = cat.cat_nombre,
+                                       Value = cat.cat_codigo.ToString()
+                                   };
 
+            ViewBag.ListItems = categoriasSelect;
             return View();
         }
 
