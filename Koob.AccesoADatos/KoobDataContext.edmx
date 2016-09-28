@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KoobModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KoobModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="administradores">
           <Key>
             <PropertyRef Name="adm_codigo" />
@@ -77,6 +77,9 @@
           <Property Name="lib_ubicacion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="usu_email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="cat_codigo" Type="int" Nullable="false" />
+          <Property Name="lib_autores" Type="varchar" MaxLength="100" />
+          <Property Name="lib_imagen" Type="varchar" MaxLength="100" />
+          <Property Name="lib_sinopsis" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="reportes">
           <Key>
@@ -271,8 +274,7 @@
             <End Role="reportes" EntitySet="reportes" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KoobModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -360,6 +362,9 @@
           <NavigationProperty Name="fotos" Relationship="Self.fotos_fk_Fotos_Libros1" FromRole="libros" ToRole="fotos" />
           <NavigationProperty Name="interesados" Relationship="Self.interesados_fk_Interesados_Libros1" FromRole="libros" ToRole="interesados" />
           <NavigationProperty Name="usuarios" Relationship="Self.libros_fk_Libros_Usuarios1" FromRole="libros" ToRole="usuarios" />
+          <Property Name="lib_autores" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lib_imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lib_sinopsis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="reportes">
           <Key>
@@ -639,6 +644,9 @@
           <EntitySetMapping Name="libros">
             <EntityTypeMapping TypeName="KoobModel.libros">
               <MappingFragment StoreEntitySet="libros">
+                <ScalarProperty Name="lib_sinopsis" ColumnName="lib_sinopsis" />
+                <ScalarProperty Name="lib_imagen" ColumnName="lib_imagen" />
+                <ScalarProperty Name="lib_autores" ColumnName="lib_autores" />
                 <ScalarProperty Name="lib_codigo" ColumnName="lib_codigo" />
                 <ScalarProperty Name="lib_isbn" ColumnName="lib_isbn" />
                 <ScalarProperty Name="lib_descripcion" ColumnName="lib_descripcion" />

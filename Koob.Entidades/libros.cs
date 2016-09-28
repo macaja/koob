@@ -27,6 +27,9 @@ namespace Koob.Entidades
         public string lib_ubicacion { get; set; }
         public string usu_email { get; set; }
         public int cat_codigo { get; set; }
+        public string lib_autores { get; set; }
+        public string lib_imagen { get; set; }
+        public string lib_sinopsis { get; set; }
     
         public virtual categorias categorias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

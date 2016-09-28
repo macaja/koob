@@ -14,5 +14,8 @@ namespace Koob.Dominio
         public string lib_ubicacion { get; set; }
         public string usu_email { get; set; }
         public int cat_codigo { get; set; }
+        public string lib_autores { get; set; }
+        public string lib_imagen { get; set; }
+        public string lib_sinopsis { get; set; }
     }
 }
