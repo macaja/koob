@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<Koob.Dominio.Libro>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Libros";
 }
-
+ <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Deseo.js")"></script> 
 <h2>Libros Disponibles</h2>
 
 <p>
@@ -38,8 +39,22 @@
             @Html.DisplayFor(modelItem => item.usu_email)
         </td>
         <td>
+            @Html.HiddenFor(modelItem => item.lib_codigo)
             @Html.DisplayFor(modelItem => item.cat_codigo)
         </td>
+@if (Request.IsAuthenticated)
+{
+        <td>
+             
+            <input id="usu_email" type="hidden" value=@User.Identity.Name />
+            <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos()">
+                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            </button>
+            <div id="CuerpoMensaje">
+                <div id="mensaje"></div>    
+            </div>
+        </td>
+}
         <td>
             @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
@@ -51,3 +66,4 @@
 }
 
 </table>
+@Scripts.Render("~/Scripts/custom/Deseo")

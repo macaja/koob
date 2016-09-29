@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriasRepository.cs" />
+    <Compile Include="DeseoRepository.cs" />
     <Compile Include="FotosRepository.cs" />
     <Compile Include="LibrosRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

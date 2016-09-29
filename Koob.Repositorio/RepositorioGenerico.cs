@@ -52,12 +52,6 @@ namespace Koob.Repositorio
         {
             return dbSet;
         }
-      /* public virtual TEntidad logIn(object email)
-        {
-           
-            return dbSet.Where();
-           
-        }*/
 
         public virtual TEntidad GetByID(object id)
         {
