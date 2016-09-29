@@ -27,10 +27,18 @@ namespace Koob.Vista.Controllers
             return View(deseos);
         }
 
-        // GET: Deseo/Details/5
-        public ActionResult Details(int id)
+        // GET: Deseo/usuario/5
+        public ActionResult usuario(string email)
         {
-            return View();
+            categoriaRepository = new CategoriasRepository();
+            deseoRepository = new DeseoRepository();
+            var deseos = deseoRepository.listaDeDeseos(email);
+            foreach (var item in deseos)
+            {
+                item.lib_catNombre = categoriaRepository.ObtenerPorID(item.cat_codigo).cat_nombre;
+            }
+
+            return View("ListaDeseos", deseos);
         }
 
         // GET: Deseo/Create

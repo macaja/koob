@@ -36,7 +36,9 @@
             @Html.DisplayFor(modelItem => item.lib_descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.usu_email)
+
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.usu_email).ToString(), "usuario","Deseo", new {id=item.usu_email})
+          
         </td>
         <td>
             @Html.HiddenFor(modelItem => item.lib_codigo)

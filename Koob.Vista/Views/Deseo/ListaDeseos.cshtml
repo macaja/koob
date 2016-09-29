@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<Koob.Dominio.Libro>
+@using Microsoft.AspNet.Identity
 
 @{
-    ViewBag.Title = "ListaDeseos";
+    ViewBag.Title = "Libros";
 }
+<script type="text/javascript" src="@Url.Content("~/Scripts/custom/Deseo.js")"></script>
+<h2>Libros Disponibles</h2>
 
-<h2>ListaDeseos</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -16,9 +14,6 @@
         </th>
         <th>
             Descripcion
-        </th>
-        <th>
-            Ubicacion
         </th>
         <th>
             Propietario
@@ -29,35 +24,45 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.lib_isbn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lib_descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lib_ubicacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.usu_email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lib_catNombre)
-        </td>
-        <!--
-        <td>
-            @*
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.lib_isbn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lib_descripcion)
+            </td>
+            <td>
 
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink(@Html.DisplayFor(modelItem => item.usu_email).ToString(), "usuario", "Deseo", new { id = item.usu_email })
 
-            *@
-        </td>
-        -->
-    </tr>
-}
+            </td>
+            <td>
+                @Html.HiddenFor(modelItem => item.lib_codigo)
+                @Html.DisplayFor(modelItem => item.lib_catNombre)
+            </td>
+            @if (Request.IsAuthenticated && item.usu_email != User.Identity.Name)
+            {
+                <td>
+
+                    <input id="usu_email" type="hidden" value=@User.Identity.Name />
+                    <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos()">
+                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                    </button>
+                    <div id="CuerpoMensaje">
+                        <div id="mensaje"></div>
+                    </div>
+                </td>
+            }
+            <td>
+                @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+
+                *@
+            </td>
+        </tr>
+    }
 
 </table>
