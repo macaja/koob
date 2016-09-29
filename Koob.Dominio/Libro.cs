@@ -17,5 +17,7 @@ namespace Koob.Dominio
         public string lib_autores { get; set; }
         public string lib_imagen { get; set; }
         public string lib_sinopsis { get; set; }
+        public string lib_titulo { get; set; }
+        public string lib_catNombre { get; set; }
     }
 }

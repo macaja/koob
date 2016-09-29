@@ -22,26 +22,26 @@ namespace Koob.Repositorio
                          join v in context.deseos on u.lib_codigo equals v.lib_codigo
                          where v.usu_email == usuEmail
                          select u;
+                return new List<dominio.Libro>(Deseos.AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Libro>)).ToList();
             }
 
-           return new List<dominio.Libro>(Deseos.AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Libro>)).ToList();
+          // return new List<dominio.Libro>(Deseos.AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Libro>)).ToList();
         }
-        private Boolean verificar(string email, int libCodigo)
+        private deseos verificar(string email, int libCodigo)
         {
-            bool esta =false;
+            
             using (var context = new KoobEntities())
             {
                 var lib = context.deseos.Where(x => x.usu_email == email && x.lib_codigo == libCodigo).FirstOrDefault();
-                if (lib!=null)
-                {
-                    esta = true;
-                }
+                return lib;
             }
-            return esta;
+            
         }
         public Boolean agregarDeseo(dominio.Deseo deseo)
         {
-            if (verificar(deseo.usu_email, deseo.lib_codigo)==false)
+            var estaEnBD = verificar(deseo.usu_email, deseo.lib_codigo);
+
+            if (estaEnBD==null)
             {
                 AutoMapper.Mapper.CreateMap<dominio.Deseo, deseos>();
                 var dese = AutoMapper.Mapper.Map<deseos>(deseo);
@@ -51,8 +51,17 @@ namespace Koob.Repositorio
             }
             else
             {
+
+                quitarDeseo(estaEnBD);
                 return false;
             }
+        }
+        private void quitarDeseo(deseos deseo)
+        {
+
+            Delete(deseo);
+            Save();
+
         }
     }
 }

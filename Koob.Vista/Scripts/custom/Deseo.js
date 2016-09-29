@@ -14,7 +14,7 @@
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(Deseo),
         success: function (resultado) {
-            $('.glyphicon glyphicon-heart').css("background-color", "red")
+            $('.glyphicon glyphicon-heart').css("color", "red")
             $('#cuerpoMensaje').text(resultado.mensaje);
             $('#mensaje').show();
         },

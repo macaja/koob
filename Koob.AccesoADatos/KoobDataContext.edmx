@@ -80,6 +80,7 @@
           <Property Name="lib_autores" Type="varchar" MaxLength="100" />
           <Property Name="lib_imagen" Type="varchar" MaxLength="100" />
           <Property Name="lib_sinopsis" Type="nvarchar(max)" />
+          <Property Name="lib_titulo" Type="nvarchar" MaxLength="70" />
         </EntityType>
         <EntityType Name="reportes">
           <Key>
@@ -365,6 +366,7 @@
           <Property Name="lib_autores" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="lib_imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="lib_sinopsis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="lib_titulo" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="reportes">
           <Key>
@@ -644,6 +646,7 @@
           <EntitySetMapping Name="libros">
             <EntityTypeMapping TypeName="KoobModel.libros">
               <MappingFragment StoreEntitySet="libros">
+                <ScalarProperty Name="lib_titulo" ColumnName="lib_titulo" />
                 <ScalarProperty Name="lib_sinopsis" ColumnName="lib_sinopsis" />
                 <ScalarProperty Name="lib_imagen" ColumnName="lib_imagen" />
                 <ScalarProperty Name="lib_autores" ColumnName="lib_autores" />

@@ -22,6 +22,7 @@ namespace Koob.Vista.Models
         public string usu_email { get; set; }
         [Display(Name = "Categoria")]
         public int cat_codigo { get; set; }
+        public string lib_catNombre { get; set; }
         
     }
 }

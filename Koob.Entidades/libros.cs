@@ -30,6 +30,7 @@ namespace Koob.Entidades
         public string lib_autores { get; set; }
         public string lib_imagen { get; set; }
         public string lib_sinopsis { get; set; }
+        public string lib_titulo { get; set; }
     
         public virtual categorias categorias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

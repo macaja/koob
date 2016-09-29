@@ -11,11 +11,20 @@ namespace Koob.Vista.Controllers
 {
     public class DeseoController : Controller
     {
-        DeseoRepository deseoRepository;
+        private DeseoRepository deseoRepository;
+        private CategoriasRepository categoriaRepository;
         // GET: Deseo
-        public ActionResult Index()
+        public ActionResult ListaDeseos()
         {
-            return View();
+            categoriaRepository = new CategoriasRepository();
+            deseoRepository = new DeseoRepository();
+            var deseos = deseoRepository.listaDeDeseos(User.Identity.Name);
+            foreach (var item in deseos)
+            {
+                item.lib_catNombre = categoriaRepository.ObtenerPorID(item.cat_codigo).cat_nombre;
+            }
+            
+            return View(deseos);
         }
 
         // GET: Deseo/Details/5
@@ -38,6 +47,7 @@ namespace Koob.Vista.Controllers
             try
             {
                 deseoRepository = new DeseoRepository();
+
                 bool seagrego=deseoRepository.agregarDeseo(deseo);
                 if (seagrego)
                 {
@@ -45,7 +55,7 @@ namespace Koob.Vista.Controllers
                 }
                 else
                 {
-                    resultado.Data = new { mensaje = "El libro ya se encuentra en su lista de deseos" };
+                    resultado.Data = new { mensaje = "El libro se ha quitado de su lista de deseos" };
                 }
                 return resultado;
 

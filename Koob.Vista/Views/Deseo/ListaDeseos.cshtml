@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Koob.Dominio.Libro>
+
+@{
+    ViewBag.Title = "ListaDeseos";
+}
+
+<h2>ListaDeseos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ISBN
+        </th>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            Ubicacion
+        </th>
+        <th>
+            Propietario
+        </th>
+        <th>
+            Categoria
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.lib_isbn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lib_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lib_ubicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usu_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lib_catNombre)
+        </td>
+        <!--
+        <td>
+            @*
+
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+
+            *@
+        </td>
+        -->
+    </tr>
+}
+
+</table>

@@ -12,13 +12,20 @@ namespace Koob.Vista.Controllers
 {
     public class LibroController : Controller
     {
-        LibrosRepository libroRepository;
+        private LibrosRepository libroRepository;
+        private CategoriasRepository categoriaRepository;
 
         // GET: Libro
         public ActionResult Index()
         {
+
+            categoriaRepository = new CategoriasRepository();
             libroRepository = new LibrosRepository();
             var libros = libroRepository.ObtenerLibros();
+            foreach (var item in libros)
+            {
+                item.lib_catNombre = categoriaRepository.ObtenerPorID(item.cat_codigo).cat_nombre;
+            }
             return View(libros);
         }
 
