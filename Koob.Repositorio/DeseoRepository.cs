@@ -11,7 +11,7 @@ namespace Koob.Repositorio
 {
     public class DeseoRepository:RepositorioGenerico<deseos>
     {
-        public List<dominio.Libro> listaDeDeseos(String usuEmail)
+        public List<dominio.Libro> listaDeDeseos(string usuEmail)
         {
             IQueryable<libros> Deseos;
             AutoMapper.Mapper.CreateMap<libros, dominio.Libro>();

@@ -37,7 +37,7 @@ namespace Koob.Vista.Controllers
 
         // GET: Usuario/Details/5
 
-        public ActionResult Details(int id)
+        public ActionResult Details(object id)
         {
             usuarioRepository = new UsuarioRepository();
             var empleado = usuarioRepository.ObtenerPorID(id);

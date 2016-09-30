@@ -1,5 +1,5 @@
-﻿function EnviarDatos() {
-    var codigo = $('#item_lib_codigo').val();
+﻿function EnviarDatos(libCodigo) {
+    var codigo = libCodigo;
     var email = $('#usu_email').val();
 
     var Deseo = {

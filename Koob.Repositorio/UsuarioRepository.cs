@@ -15,7 +15,7 @@ namespace Koob.Repositorio
             AutoMapper.Mapper.CreateMap<usuarios, dominio.Usuario>();
             return new List<dominio.Usuario>(ObtenerTodos().AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Usuario>)).ToList();
         }
-        public dominio.Usuario ObtenerPorID(int id)
+        public dominio.Usuario ObtenerPorID(object id)
         {
             var usuario = GetByID(id);
 
