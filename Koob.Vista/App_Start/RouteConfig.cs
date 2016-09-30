@@ -14,6 +14,12 @@ namespace Koob.Vista
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Intereses",
+                "Deseo/usuario/{email}",
+                new { controller = "Deseo", action = "usuario", email = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

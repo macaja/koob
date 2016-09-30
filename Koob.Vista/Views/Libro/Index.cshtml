@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "Libros";
+
 }
  <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Deseo.js")"></script> 
 <h2>Libros Disponibles</h2>
@@ -26,7 +27,7 @@
         </th>
         <th></th>
     </tr>
-
+    
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -37,19 +38,19 @@
         </td>
         <td>
 
-            @Html.ActionLink(@Html.DisplayFor(modelItem => item.usu_email).ToString(), "usuario","Deseo", new {id=item.usu_email})
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.usu_email).ToString(), "usuario","Deseo", new {id=item.usu_email} ,null)
           
         </td>
         <td>
-            @Html.HiddenFor(modelItem => item.lib_codigo)
             @Html.DisplayFor(modelItem => item.lib_catNombre)
         </td>
+        
 @if (Request.IsAuthenticated && item.usu_email != User.Identity.Name)
 {
         <td>
              
             <input id="usu_email" type="hidden" value=@User.Identity.Name />
-            <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos()">
+            <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@item.lib_codigo)">
                 <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
             </button>
             <div id="CuerpoMensaje">
@@ -57,13 +58,16 @@
             </div>
         </td>
 }
+        <!--
         <td>
-            @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-
-            *@
+           @*
+    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        *@
+            
         </td>
+            -->
     </tr>
 }
 
