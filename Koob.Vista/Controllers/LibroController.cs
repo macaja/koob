@@ -5,7 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using libro = Koob.Dominio.Libro;
 using Koob.Repositorio;
+using System.Net;
+using Newtonsoft.Json;
 using fachada = Koob.Vista.Models;
+using servicio = Koob.Vista.Models.API;
 
 
 namespace Koob.Vista.Controllers
@@ -45,17 +48,32 @@ namespace Koob.Vista.Controllers
         [HttpPost]
         public ActionResult Ingresar(fachada.Libro model)
         {
+            string url = @"https://www.googleapis.com/books/v1/volumes?q=isbn:9788479538200";
+            var json = new WebClient().DownloadString(url);
+            servicio.Libro libros = JsonConvert.DeserializeObject<servicio.Libro>(json);
             try
             {
-                var t = User.Identity.Name;
-                model.usu_email = t;
-                libroRepository = new LibrosRepository();
-                //model.usu_codigo = 1;
-                AutoMapper.Mapper.CreateMap<fachada.Libro, libro>();
-                var lib = AutoMapper.Mapper.Map<libro>(model);
-                libroRepository.InsertarLibro(lib);
-
-                return RedirectToAction("Index");
+                int totalItems = libros.totalItems;
+                if (totalItems < 1)
+                {
+                    return View(model);
+                }
+                else
+                {
+                    var t = User.Identity.Name;
+                    var autores = libros.items[0].volumeInfo.authors[0];
+                    var imagen = libros.items[0].volumeInfo.imageLinks.thumbnail;
+                    var sinopsis = libros.items[0].volumeInfo.description;
+                    model.usu_email = t;                    
+                    libroRepository = new LibrosRepository();
+                    AutoMapper.Mapper.CreateMap<fachada.Libro, libro>();
+                    var lib = AutoMapper.Mapper.Map<libro>(model);
+                    lib.lib_autores = autores;
+                    lib.lib_imagen = imagen;
+                    lib.lib_sinopsis = sinopsis;
+                    libroRepository.InsertarLibro(lib);
+                    return RedirectToAction("Index");
+                }                
             }
             catch
             {

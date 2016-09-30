@@ -197,6 +197,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\API\Caracteristicas.cs" />
+    <Compile Include="Models\API\Imagen.cs" />
+    <Compile Include="Models\API\Informacion.cs" />
+    <Compile Include="Models\API\Libro.cs" />
     <Compile Include="Models\Foto.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Libro.cs" />
