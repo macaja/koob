@@ -211,6 +211,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom\estylo.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -272,6 +273,8 @@
     <Content Include="Views\Libro\Index.cshtml" />
     <Content Include="Views\Usuario\IngresarLibro.cshtml" />
     <Content Include="Views\Deseo\ListaDeseos.cshtml" />
+    <Content Include="Views\Deseo\Sample.cshtml" />
+    <Content Include="Views\Libro\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

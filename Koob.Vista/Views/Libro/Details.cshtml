@@ -1,0 +1,45 @@
+﻿@model Koob.Dominio.Libro
+
+@{
+    ViewBag.Title = "Details";
+}
+<script type="text/javascript" src="@Url.Content("~/Scripts/custom/Deseo.js")"></script>
+
+<h2>Detalles del Libro</h2>
+
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src=@Html.DisplayFor(model => model.lib_imagen) alt=@Html.DisplayFor(model => model.lib_titulo)>
+            <div class="caption">
+                <h3>@Html.DisplayFor(model => model.lib_titulo)</h3>
+                <h2>@Html.DisplayFor(model => model.lib_autores) </h2>
+                <p>@Html.DisplayFor(model => model.lib_sinopsis)</p>
+                <h4>@Html.DisplayFor(model => model.lib_catNombre)</h4>
+                <h4>@Html.DisplayFor(model => model.lib_isbn)</h4>
+                <h4>@Html.DisplayFor(model => model.lib_ubicacion )</h4>
+                <p>@Html.DisplayFor(model => model.lib_descripcion)</p>
+                <h5>Propietario: @Html.ActionLink(@Html.DisplayFor(model => model.usu_email).ToString(), "usuario", "Deseo", new RouteValueDictionary(new {email = Model.usu_email}), null)</h5>
+                @if (Request.IsAuthenticated && Model.usu_email != User.Identity.Name)
+                {
+                    <h4>
+
+                        <input id="usu_email" type="hidden" value=@User.Identity.Name />
+                        <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@Model.lib_codigo)">
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                        </button>
+
+                    </h4>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @*
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    *@
+
+    @Html.ActionLink("Volver", "Index")
+</p>

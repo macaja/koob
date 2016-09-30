@@ -24,6 +24,16 @@ namespace Koob.Repositorio
             AutoMapper.Mapper.CreateMap<libros, dominio.Libro>();
             return AutoMapper.Mapper.Map<dominio.Libro>(libro);
         }
+        public dominio.Libro obtenerLibPorID(int id)
+        {
+            using (var context = new KoobEntities())
+            {
+                var lib = context.libros.Where(x => x.lib_codigo==id).FirstOrDefault();
+                AutoMapper.Mapper.CreateMap<libros, dominio.Libro>();
+                var libro = AutoMapper.Mapper.Map<dominio.Libro>(lib);
+                return libro;
+            }
+        }
         public void InsertarLibro(dominio.Libro libro)
         {
             AutoMapper.Mapper.CreateMap<dominio.Libro, libros>();

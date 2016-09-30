@@ -35,7 +35,10 @@ namespace Koob.Vista.Controllers
         // GET: Libro/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            categoriaRepository = new CategoriasRepository();
+            libroRepository = new LibrosRepository();
+            var libro = libroRepository.obtenerLibPorID(id);
+            return View(libro);
         }
 
         // GET: Libro/Create

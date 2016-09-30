@@ -5,70 +5,45 @@
     ViewBag.Title = "Libros";
 
 }
- <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Deseo.js")"></script> 
-<h2>Libros Disponibles</h2>
+<link rel="stylesheet" href="~/Content/custom/estylo.css" />
+<script type="text/javascript" src="@Url.Content("~/Scripts/custom/Deseo.js")"></script>
+<h2>Lista de Deseos</h2>
+<div style="display:block">
+    <ol class="list-group">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            ISBN
-        </th>
-        <th>
-            Descripcion
-        </th>
-        <th>
-            Propietario
-        </th>
-        <th>
-            Categoria
-        </th>
-        <th></th>
-    </tr>
-    
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.lib_isbn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lib_descripcion)
-        </td>
-        <td>
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                        <a href='@Url.Action("Details", "Libro", new { id = item.lib_codigo })' class="thumbnail">
+                            <img src=@Html.DisplayFor(modelItem => item.lib_imagen) alt="ensayo">
+                        </a>
+                    </div>
+                    <div>
+                        <h2> @Html.DisplayFor(modelItem => item.lib_isbn)</h2>
+                        <h4>@Html.DisplayFor(modelItem => item.lib_descripcion)</h4>
+                        <h4>@Html.ActionLink(@Html.DisplayFor(modelItem => item.usu_email).ToString(), "usuario", "Deseo", new { email = item.usu_email }, null)</h4>
+                        <h4>@Html.DisplayFor(modelItem => item.lib_catNombre)</h4>
 
-            @Html.ActionLink(@Html.DisplayFor(modelItem => item.usu_email).ToString(), "usuario","Deseo", new {id=item.usu_email} ,null)
-          
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lib_catNombre)
-        </td>
-        
-@if (Request.IsAuthenticated && item.usu_email != User.Identity.Name)
-{
-        <td>
-             
-            <input id="usu_email" type="hidden" value=@User.Identity.Name />
-            <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@item.lib_codigo)">
-                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            </button>
-            <div id="CuerpoMensaje">
-                <div id="mensaje"></div>    
-            </div>
-        </td>
-}
-        <!--
-        <td>
-           @*
-    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        *@
-            
-        </td>
-            -->
-    </tr>
-}
+                        @if (Request.IsAuthenticated && item.usu_email != User.Identity.Name)
+                        {
+                            <h4>
 
-</table>
+                                <input id="usu_email" type="hidden" value=@User.Identity.Name />
+                                <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@item.lib_codigo)">
+                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                                </button>
+
+                            </h4>
+
+                        }
+                    </div>
+
+
+                </div>
+            </li>
+        }
+
+    </ol>
+</div>

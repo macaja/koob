@@ -1,0 +1,9 @@
+﻿body {
+}
+.item-wrapper
+{
+    float: left;
+    display: block;
+    width: 20%;
+    padding: .5em;
+}
