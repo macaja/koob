@@ -134,7 +134,7 @@ namespace Koob.Vista.Controllers
             {                
                 int totalItems = libros.totalItems;                
                 if (totalItems >= 1)
-                {      
+                { 
                     var t = User.Identity.Name;
                     string titulo = libros.items[0].volumeInfo.title;
                     int longitudAutores= libros.items[0].volumeInfo.authors.Count;
@@ -146,9 +146,9 @@ namespace Koob.Vista.Controllers
                             autores = autores + " , "+libros.items[0].volumeInfo.authors[i];
                         }
                     }                    
-                    string imagen = libros.items[0].volumeInfo.imageLinks.smallThumbnail;
+                    string imagen = libros.items[0].volumeInfo.imageLinks.smallThumbnail.ToString();
                     int longitudImagen = imagen.Length;
-                    imagen = imagen.Substring(7,longitudImagen-7);
+                    imagen = imagen.Substring(7, longitudImagen - 7);
                     string sinopsis = libros.items[0].volumeInfo.description;
                     LibrosRepository librosRepository = new LibrosRepository();
                     AutoMapper.Mapper.CreateMap<fachada.Libro, Dominio.Libro>();
@@ -163,13 +163,35 @@ namespace Koob.Vista.Controllers
                 }
                 else
                 {
+                    CategoriasRepository categoriasRepository = new CategoriasRepository();
+                    var categorias = categoriasRepository.ObtenerCategorias();
+                    var categoriasSelect = from cat in categorias
+                                           select new SelectListItem()
+                                           {
+                                               Text = cat.cat_nombre,
+                                               Value = cat.cat_codigo.ToString()
+                                           };
+
+                    ViewBag.ListItems = categoriasSelect;
+                    ViewBag.ErrorMessage = "El ISBN no es correcto o no se reconoce, por favor intente con otro similar";
                     return View(model);
                 }
                
             }
             catch(Exception e)
             {
+                CategoriasRepository categoriasRepository = new CategoriasRepository();
+                var categorias = categoriasRepository.ObtenerCategorias();
+                var categoriasSelect = from cat in categorias
+                                       select new SelectListItem()
+                                       {
+                                           Text = cat.cat_nombre,
+                                           Value = cat.cat_codigo.ToString()
+                                       };
+
+                ViewBag.ListItems = categoriasSelect;
                 var error = e.ToString();
+                ViewBag.ErrorMessage = "UPPSSS! Los datos arrojados por el ISBN no son claros, intente por favor con otro ISBN similar";
                 return View();
             }
         }

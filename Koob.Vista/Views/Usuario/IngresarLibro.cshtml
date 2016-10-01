@@ -22,6 +22,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.lib_isbn, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.lib_isbn, "", new { @class = "text-danger" })
+                <p>@ViewBag.ErrorMessage</p>
             </div>
         </div>
 

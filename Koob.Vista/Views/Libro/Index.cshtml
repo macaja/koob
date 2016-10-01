@@ -7,43 +7,45 @@
 }
 <link rel="stylesheet" href="~/Content/custom/estylo.css" />
 <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Deseo.js")"></script>
-<h2>Lista de Deseos</h2>
+<h2>Libros disponibles: </h2>
 <div style="display:block">
-    <ol class="list-group">
+    <div class="row">
 
         @foreach (var item in Model)
         {
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-xs-6 col-md-3">
-                        <a href='@Url.Action("Details", "Libro", new { id = item.lib_codigo })' class="thumbnail">
-                            <img src=@Html.DisplayFor(modelItem => item.lib_imagen) alt="ensayo">
-                        </a>
-                    </div>
-                    <div>
-                        <h2> @Html.DisplayFor(modelItem => item.lib_isbn)</h2>
-                        <h4>@Html.DisplayFor(modelItem => item.lib_descripcion)</h4>
-                        <h4>@Html.ActionLink(@Html.DisplayFor(modelItem => item.usu_email).ToString(), "usuario", "Deseo", new { email = item.usu_email }, null)</h4>
-                        <h4>@Html.DisplayFor(modelItem => item.lib_catNombre)</h4>
-
-                        @if (Request.IsAuthenticated && item.usu_email != User.Identity.Name)
-                        {
-                            <h4>
-
-                                <input id="usu_email" type="hidden" value=@User.Identity.Name />
-                                <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@item.lib_codigo)">
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                </button>
-
-                            </h4>
-
-                        }
-                    </div>
 
 
+            <div class="col-xs-6 col-md-3">
+                <a href='@Url.Action("Details", "Libro", new { id = item.lib_codigo })' class="thumbnail">
+                    <img src=@("http://"+item.lib_imagen) alt=@item.lib_titulo>
+                </a>
+
+                <div>
+                    <h2> @Html.DisplayFor(modelItem => item.lib_titulo)</h2>
+                    <h4>@Html.DisplayFor(modelItem => item.lib_autores)</h4>
+                    <h4>@Html.ActionLink(@Html.DisplayFor(modelItem => item.usu_email).ToString(), "usuario", "Deseo", new { email = item.usu_email.ToString() }, null)</h4>
+                    <h4>@Html.DisplayFor(modelItem => item.lib_catNombre)</h4>
+
+                    @if (Request.IsAuthenticated && item.usu_email != User.Identity.Name)
+                {
+                        <h4>
+
+                            <input id="usu_email" type="hidden" value=@User.Identity.Name />
+                            <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@item.lib_codigo)">
+                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                            </button>
+
+                        </h4>
+
+                    }
                 </div>
-            </li>
+            </div>
+
+
+
+
         }
 
-    </ol>
+    </div>
+
 </div>
