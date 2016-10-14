@@ -20,7 +20,7 @@
                 <h4>@Html.DisplayFor(model => model.lib_isbn)</h4>
                 <h4>@Html.DisplayFor(model => model.lib_ubicacion )</h4>
                 <p>@Html.DisplayFor(model => model.lib_descripcion)</p>
-                <h5>Propietario: @Html.ActionLink(@Html.DisplayFor(model => model.usu_email).ToString(), "usuario", "Deseo", new RouteValueDictionary(new {email = Model.usu_email}), null)</h5>
+                <h5>Propietario: <a href="@Url.Action("usuario", "Deseo", new { email = Model.usu_email })">@Html.DisplayFor(model => model.usu_email)</a></h5>
                 @if (Request.IsAuthenticated && Model.usu_email != User.Identity.Name && User.Identity.Name != "admin")
                 {
                     
@@ -31,10 +31,15 @@
                         </button>
 
                     </h4>
-                    <button type="button" class="btn btn-default btn-sm" onclick="Reportar(@Model.lib_codigo, @Model.usu_email)">
+                    <input id="propietario" type="hidden" value=@Model.usu_email />
+                    <button type="button" class="btn btn-default btn-sm" onclick="Reportar(@Model.lib_codigo)">
                             Reportar
                     </button>
 
+                }
+                @if (User.Identity.Name == "admin")
+                {
+                    @Html.ActionLink("Eliminar Libro", "Delete", new {id = Model.lib_codigo})
                 }
             </div>
         </div>

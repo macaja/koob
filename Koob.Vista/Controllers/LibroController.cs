@@ -113,12 +113,14 @@ namespace Koob.Vista.Controllers
             {
                 // TODO: Add update logic here
                 libroRepository = new LibrosRepository();
+                ReporteRepository reporteRepo = new ReporteRepository();
+                reporteRepo.eliminarReporteID(id);
                 libroRepository.eliminarLibroID(id);
-                return RedirectToAction("Reportes", "Administrador");
+                return RedirectToAction("Index", "Reporte");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index", "Reporte");
             }
         }
 

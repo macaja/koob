@@ -1,6 +1,6 @@
-﻿function Reportar(libCodigo,usuario) {
+﻿function Reportar(libCodigo) {
     var codigo = libCodigo;
-    var email = usuario;
+    var email = $('#propietario').val();
 
     var Reporte = {
         lib_codigo: codigo,

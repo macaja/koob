@@ -34,6 +34,17 @@ namespace Koob.Repositorio
                 return libro;
             }
         }
+
+
+        private libros obtenerPorIDParaBorrar(int id)
+        {
+            using (var context = new KoobEntities())
+            {
+                var lib = context.libros.Where(x => x.lib_codigo == id).FirstOrDefault(); 
+                return lib;
+            }
+        }
+
         public void InsertarLibro(dominio.Libro libro)
         {
             AutoMapper.Mapper.CreateMap<dominio.Libro, libros>();
@@ -41,11 +52,11 @@ namespace Koob.Repositorio
             Insert(lib);
             Save();
         }
+
         public void eliminarLibroID(int id)
         {
-            ReporteRepository reportesRepository = new ReporteRepository();
-            reportesRepository.eliminarReporteID(id);
-            Delete(id);
+            libros libro = obtenerPorIDParaBorrar(id);
+            Delete(libro);
             Save();
         }
     }

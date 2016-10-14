@@ -34,7 +34,9 @@
                 @Html.DisplayFor(modelItem => item.lib_codigo)
             </td>
             <td>
-                @Html.ActionLink("Detalles libro", "Details", "Libro", new { id = item.lib_codigo }) |
+                <a href='@Url.Action("Details", "Libro", new { id = item.lib_codigo })'>
+                    Detalles
+                </a>
             </td>
         </tr>
     }

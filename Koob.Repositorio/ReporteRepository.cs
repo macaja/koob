@@ -8,7 +8,7 @@ using dominio = Koob.Dominio;
 
 namespace Koob.Repositorio
 {
-    public class ReporteRepository: RepositorioGenerico<reportes>
+    public class ReporteRepository : RepositorioGenerico<reportes>
     {
         public List<dominio.Reporte> ObtenerReportes()
         {
@@ -46,24 +46,25 @@ namespace Koob.Repositorio
         }
 
 
-        private IQueryable<reportes> repeatReportes(int libCodigo)
+        private dominio.Reporte repeatReportes(int libCodigo)
         {
             using (var context = new KoobEntities())
             {
-                var lib = context.reportes.Where(x => x.lib_codigo == libCodigo);
-                return lib;
+                var lib = context.reportes.Where(x => x.lib_codigo == libCodigo).FirstOrDefault();
+                AutoMapper.Mapper.CreateMap<reportes, dominio.Reporte>();
+                var report = AutoMapper.Mapper.Map<dominio.Reporte>(lib);
+                return report;
             }
 
         }
 
         public void eliminarReporteID(int lib_codigo)
         {
-            List<reportes> reportes = new List<reportes>(repeatReportes(lib_codigo).AsEnumerable()).ToList();
-            foreach (var reporte in reportes)
-            {
-                Delete(reporte.rep_codigo);
+            var reporte = repeatReportes(lib_codigo);
+            Delete(reporte.rep_codigo);
                 Save();
-            }
+
+           
         }
     }
 }
