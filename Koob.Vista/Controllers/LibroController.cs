@@ -109,7 +109,17 @@ namespace Koob.Vista.Controllers
         // GET: Libro/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+                // TODO: Add update logic here
+                libroRepository = new LibrosRepository();
+                libroRepository.eliminarLibroID(id);
+                return RedirectToAction("Reportes", "Administrador");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: Libro/Delete/5

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Koob.Dominio
 {
-    public class Administrador
+    public class Reporte
     {
+        public int rep_codigo { get; set; }
+        public string usu_email { get; set; }
         public int adm_codigo { get; set; }
-        public string adm_nombre { get; set; }
-        public string adm_password { get; set; }
+        public int lib_codigo { get; set; }
     }
 }

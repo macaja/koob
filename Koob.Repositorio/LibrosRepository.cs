@@ -41,7 +41,12 @@ namespace Koob.Repositorio
             Insert(lib);
             Save();
         }
-        //public List<dominio.Libro> misLibros(String email)
-        //{}
+        public void eliminarLibroID(int id)
+        {
+            ReporteRepository reportesRepository = new ReporteRepository();
+            reportesRepository.eliminarReporteID(id);
+            Delete(id);
+            Save();
+        }
     }
 }

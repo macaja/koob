@@ -53,6 +53,7 @@ namespace Koob.Repositorio
             return dbSet;
         }
 
+
         public virtual TEntidad GetByID(object id)
         {
             return dbSet.Find(id);

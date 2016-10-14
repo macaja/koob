@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Koob.Dominio.Reporte>
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated && User.Identity.Name == "admin")
+{
+
+    ViewBag.Title = "Reportes";
+
+<h2>Libros Reportados</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Codigo
+        </th>
+        <th>
+            Usuario Reportado
+        </th>
+        <th>
+            Codigo del libro
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.rep_codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usu_email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lib_codigo)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles libro", "Details", "Libro", new { id = item.lib_codigo }) |
+            </td>
+        </tr>
+    }
+
+</table>
+}
+

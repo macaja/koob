@@ -77,10 +77,10 @@
           <Property Name="lib_ubicacion" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="usu_email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="cat_codigo" Type="int" Nullable="false" />
-          <Property Name="lib_autores" Type="varchar" MaxLength="100" />
-          <Property Name="lib_imagen" Type="varchar" MaxLength="100" />
+          <Property Name="lib_autores" Type="nvarchar(max)" />
+          <Property Name="lib_imagen" Type="varchar(max)" />
           <Property Name="lib_sinopsis" Type="nvarchar(max)" />
-          <Property Name="lib_titulo" Type="nvarchar" MaxLength="70" />
+          <Property Name="lib_titulo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="reportes">
           <Key>
@@ -89,6 +89,7 @@
           <Property Name="rep_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="usu_email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="adm_codigo" Type="int" Nullable="false" />
+          <Property Name="lib_codigo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="usuarios">
           <Key>
@@ -363,10 +364,10 @@
           <NavigationProperty Name="fotos" Relationship="Self.fotos_fk_Fotos_Libros1" FromRole="libros" ToRole="fotos" />
           <NavigationProperty Name="interesados" Relationship="Self.interesados_fk_Interesados_Libros1" FromRole="libros" ToRole="interesados" />
           <NavigationProperty Name="usuarios" Relationship="Self.libros_fk_Libros_Usuarios1" FromRole="libros" ToRole="usuarios" />
-          <Property Name="lib_autores" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="lib_imagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lib_autores" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="lib_imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="lib_sinopsis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="lib_titulo" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="lib_titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="reportes">
           <Key>
@@ -377,6 +378,7 @@
           <Property Name="adm_codigo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="administradores" Relationship="Self.reportes_fk_Reportes_Administrador1" FromRole="reportes" ToRole="administradores" />
           <NavigationProperty Name="usuarios" Relationship="Self.reportes_fk_Reportes_Usuarios1" FromRole="reportes" ToRole="usuarios" />
+          <Property Name="lib_codigo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="usuarios">
           <Key>
@@ -662,6 +664,7 @@
           <EntitySetMapping Name="reportes">
             <EntityTypeMapping TypeName="KoobModel.reportes">
               <MappingFragment StoreEntitySet="reportes">
+                <ScalarProperty Name="lib_codigo" ColumnName="lib_codigo" />
                 <ScalarProperty Name="rep_codigo" ColumnName="rep_codigo" />
                 <ScalarProperty Name="usu_email" ColumnName="usu_email" />
                 <ScalarProperty Name="adm_codigo" ColumnName="adm_codigo" />

@@ -61,6 +61,21 @@ namespace Koob.Vista.Models
         [Display(Name = "¿Recordar cuenta?")]
         public bool RememberMe { get; set; }
     }
+    public class LoginAdmViewModel
+    {
+        [Required]
+        [Display(Name = "Nombre")]
+        public string adm_nombre { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Contraseña")]
+        public string adm_password { get; set; }
+
+        [Display(Name = "¿Recordar cuenta?")]
+        public bool RememberMe { get; set; }
+    }
+
 
     public class RegisterViewModel
     {

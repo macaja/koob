@@ -17,6 +17,7 @@ namespace Koob.Entidades
         public int rep_codigo { get; set; }
         public string usu_email { get; set; }
         public int adm_codigo { get; set; }
+        public int lib_codigo { get; set; }
     
         public virtual administradores administradores { get; set; }
         public virtual usuarios usuarios { get; set; }

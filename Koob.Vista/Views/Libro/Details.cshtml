@@ -4,6 +4,7 @@
     ViewBag.Title = "Details";
 }
 <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Deseo.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/custom/Reporte.js")"></script>
 
 <h2>Detalles del Libro</h2>
 
@@ -20,16 +21,19 @@
                 <h4>@Html.DisplayFor(model => model.lib_ubicacion )</h4>
                 <p>@Html.DisplayFor(model => model.lib_descripcion)</p>
                 <h5>Propietario: @Html.ActionLink(@Html.DisplayFor(model => model.usu_email).ToString(), "usuario", "Deseo", new RouteValueDictionary(new {email = Model.usu_email}), null)</h5>
-                @if (Request.IsAuthenticated && Model.usu_email != User.Identity.Name)
+                @if (Request.IsAuthenticated && Model.usu_email != User.Identity.Name && User.Identity.Name != "admin")
                 {
+                    
                     <h4>
-
                         <input id="usu_email" type="hidden" value=@User.Identity.Name />
                         <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@Model.lib_codigo)">
                             <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                         </button>
 
                     </h4>
+                    <button type="button" class="btn btn-default btn-sm" onclick="Reportar(@Model.lib_codigo, @Model.usu_email)">
+                            Reportar
+                    </button>
 
                 }
             </div>
