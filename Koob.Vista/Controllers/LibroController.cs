@@ -15,6 +15,7 @@ namespace Koob.Vista.Controllers
 {
     public class LibroController : Controller
     {
+        private DeseoRepository deseoRepository;
         private LibrosRepository libroRepository;
         private CategoriasRepository categoriaRepository;
 
@@ -113,7 +114,9 @@ namespace Koob.Vista.Controllers
             {
                 // TODO: Add update logic here
                 libroRepository = new LibrosRepository();
+                deseoRepository = new DeseoRepository();
                 ReporteRepository reporteRepo = new ReporteRepository();
+                deseoRepository.eliminarDeseosPorLibReportado(id);
                 reporteRepo.eliminarReporteID(id);
                 libroRepository.eliminarLibroID(id);
                 return RedirectToAction("Index", "Reporte");

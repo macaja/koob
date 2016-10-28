@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - Koob</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/custom/estylo.css" />
 
 </head>
 <body>
@@ -31,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div id="content" class="container body-content">
         @RenderBody()
         <hr />
         <footer>
@@ -41,6 +42,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Deseo.js")"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

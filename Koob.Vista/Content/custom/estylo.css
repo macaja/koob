@@ -7,3 +7,112 @@
     width: 20%;
     padding: .5em;
 }
+.wrapper-main {
+    margin: auto;
+    width: 980px;
+    background-color: #eceff1;
+    -webkit-border-radius: 0 0 3px 3px;
+    -moz-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+    padding: 0 20px 20px;
+}
+
+.listing-side {
+    float: left;
+    width: 240px;
+}
+#listing-nav {
+    display:block;
+    background: #e7e9ec;
+    border-color: #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 0;
+    padding: 0;
+}
+.princip-categorias {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border-bottom: 1px solid #ccc;
+}
+.title:first-child {
+    border-bottom: 1px solid #ccc;
+    border-top: none;
+    display: block;
+    margin: 0;
+    padding: 10px;
+}
+.cate{
+    line-height: 1.4;
+    color: #607d8b;
+    outline: none;
+    text-decoration: none;
+    display: block;
+    padding: 4px 0 4px 40px;
+}
+.cate:hover {
+    text-decoration: none;
+    background-color: #607d8b;
+    color: #fff;
+}
+.princip-categorias cate {
+    display: block;
+    line-height: 1.4;
+    font-size: .8571428571428571rem;
+    padding: 4px 0 4px 40px;
+}
+#lista-items {
+    display: block;
+    float: right;
+    width: 720px;
+}
+#content {
+    width: 1020px;
+    margin: auto;
+}
+
+h3 {
+    font-weight: normal;
+    margin: 0;
+    display: block;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+h4 {
+    font-weight: normal;
+    margin: 0;
+    display: block;
+    font-size: 1em;
+    
+}
+.items-image {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    height: 150px;
+    line-height: 95px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: 120px;
+}
+.img-index {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-style: none;
+    text-align: center;
+}
+.items-info {
+    padding-top: 30px;
+    padding: 10px 10px 10px 10px;
+    vertical-align: top;
+}

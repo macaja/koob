@@ -37,6 +37,30 @@ namespace Koob.Repositorio
             }
             
         }
+
+        public void eliminarDeseosPorLibReportado(int codigo)
+        {
+            try
+            {
+                using (var context = new KoobEntities())
+                {
+                    var lib = context.deseos.Where(x => x.lib_codigo == codigo).ToList();
+                    foreach (var deseo in lib)
+                    {
+                        quitarDeseoPorID(deseo.des_codigo);
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+            
+        }
+
         public Boolean agregarDeseo(dominio.Deseo deseo)
         {
             var estaEnBD = verificar(deseo.usu_email, deseo.lib_codigo);
@@ -56,6 +80,13 @@ namespace Koob.Repositorio
                 return false;
             }
         }
+        private void quitarDeseoPorID(int deseo)
+        {
+
+            Delete(deseo);
+            Save();
+
+        }
         private void quitarDeseo(deseos deseo)
         {
 
@@ -63,5 +94,33 @@ namespace Koob.Repositorio
             Save();
 
         }
+
+        private List<dominio.Deseo> queryLibrosMasDeseados()
+        {
+            //IQueryable<deseos> libsPopulares;
+            AutoMapper.Mapper.CreateMap<deseos, dominio.Deseo>();
+
+            using (var context = new KoobEntities())
+            {
+                var deseos = context.deseos
+                   .GroupBy(p => p.lib_codigo)
+                   .Select(g => new dominio.Deseo { lib_codigo = g.Key, count = g.Count() }).OrderByDescending(t=> t.count).ToList();
+                return deseos;   
+            }
+        }
+        public List<dominio.Libro> librosPopulares()
+        {
+            LibrosRepository libroRepository = new LibrosRepository();
+            List<dominio.Deseo> librosMasDeseados = queryLibrosMasDeseados();
+            List<dominio.Libro> librosPopulares = new List<Dominio.Libro>();
+            foreach (var libro in librosMasDeseados)
+            {
+                librosPopulares.Add(libroRepository.obtenerLibPorID(libro.lib_codigo));
+            }
+            return librosPopulares;
+
+        }
+
+
     }
 }
