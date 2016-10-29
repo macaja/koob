@@ -5,8 +5,19 @@
     ViewBag.Title = "Libros";
 
 }
+<script type="text/javascript" src="@Url.Content("~/Scripts/custom/Busquedas.js")"></script>
 <div class="wrapper-main">
     <h2>Libros disponibles: </h2>
+    <div>
+        <form class="form-inline">
+            <div class="form-group">
+                <input id="buscar" type="text" class="form-control"  placeholder="Buscar">
+            </div>            
+            <button type="button" class="btn btn-default btn-sm" onclick="BuscarTitulo()">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+        </form>       
+    </div>
     <div class="row">
         <aside class="listing-side">
             <nav id="listing-nav">

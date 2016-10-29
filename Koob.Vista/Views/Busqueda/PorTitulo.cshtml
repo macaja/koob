@@ -1,0 +1,50 @@
+﻿@model Koob.Dominio.Libro
+
+@{
+    ViewBag.Title = "PorTitulo";
+}
+
+<h2>PorTitulo</h2>
+
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img src=@("http://"+Model.lib_imagen) alt=@Model.lib_titulo>
+            <div class="caption">
+                <h3>@Html.DisplayFor(model => model.lib_titulo)</h3>
+                <h2>@Html.DisplayFor(model => model.lib_autores) </h2>
+                <p>@Html.DisplayFor(model => model.lib_sinopsis)</p>
+                <h4>@Html.DisplayFor(model => model.lib_catNombre)</h4>
+                <h4>@Html.DisplayFor(model => model.lib_isbn)</h4>
+                <h4>@Html.DisplayFor(model => model.lib_ubicacion)</h4>
+                <p>@Html.DisplayFor(model => model.lib_descripcion)</p>
+                <h5>Propietario: <a href="@Url.Action("usuario", "Deseo", new { email = Model.usu_email })">@Html.DisplayFor(model => model.usu_email)</a></h5>
+                @if (Request.IsAuthenticated && Model.usu_email != User.Identity.Name && User.Identity.Name != "admin")
+                {
+
+                    <h4>
+                        <input id="usu_email" type="hidden" value=@User.Identity.Name />
+                        <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@Model.lib_codigo)">
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                        </button>
+
+                    </h4>
+                    <input id="propietario" type="hidden" value=@Model.usu_email />
+                    <button type="button" class="btn btn-default btn-sm" onclick="Reportar(@Model.lib_codigo)">
+                        Reportar
+                    </button>
+
+                }
+                @if (User.Identity.Name == "admin")
+                {
+                    @Html.ActionLink("Eliminar Libro", "Delete", new { id = Model.lib_codigo })
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

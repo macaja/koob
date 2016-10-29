@@ -187,6 +187,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministradorController.cs" />
+    <Compile Include="Controllers\BusquedaController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\DeseoController.cs" />
     <Compile Include="Controllers\FotoController.cs" />
@@ -221,6 +222,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\custom\Busquedas.js" />
     <Content Include="Scripts\custom\Deseo.js" />
     <Content Include="Scripts\custom\Reporte.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -283,6 +285,7 @@
     <Content Include="Views\Reporte\Index.cshtml" />
     <Content Include="Views\Shared\_AdminLoginPartial.cshtml" />
     <Content Include="Views\Populares\Index.cshtml" />
+    <Content Include="Views\Busqueda\PorTitulo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

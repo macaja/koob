@@ -59,5 +59,15 @@ namespace Koob.Repositorio
             Delete(libro);
             Save();
         }
+        public dominio.Libro obtenerLibroPorTitulo(String titulo)
+        {
+            using (var context = new KoobEntities())
+            {          
+                var lib = context.libros.Where(x => x.lib_titulo == titulo).FirstOrDefault();
+                AutoMapper.Mapper.CreateMap<libros, dominio.Libro>();
+                var libro = AutoMapper.Mapper.Map<dominio.Libro>(lib);
+                return libro;
+            }
+        }
     }
 }
