@@ -11,9 +11,17 @@
     <div>
         <form class="form-inline">
             <div class="form-group">
-                <input id="buscar" type="text" class="form-control"  placeholder="Buscar">
+                <input id="titulo" type="text" class="form-control"  placeholder="Buscar Por Titulo">
             </div>            
             <button type="button" class="btn btn-default btn-sm" onclick="BuscarTitulo()">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+        </form>
+        <form class="form-inline">
+            <div class="form-group">
+                <input id="autor" type="text" class="form-control" placeholder="Buscar Por Autor">
+            </div>
+            <button type="button" class="btn btn-default btn-sm" onclick="BuscarAutor()">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </button>
         </form>       
@@ -47,7 +55,7 @@
 
 
                 <div class="col-xs-6 col-md-3">
-                    <a href='@Url.Action("Details", "Libro", new { id = item.lib_codigo })' class="thumbnail">
+                    <a href='@Url.Action("PorAutor", "Busqueda", new { autor = item.lib_autores })' class="thumbnail">
                         <figure class="items-image">
                             <img class="img-index" src=@("http://"+item.lib_imagen) alt=@item.lib_titulo>
                         </figure>

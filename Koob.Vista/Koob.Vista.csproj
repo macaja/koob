@@ -286,6 +286,7 @@
     <Content Include="Views\Shared\_AdminLoginPartial.cshtml" />
     <Content Include="Views\Populares\Index.cshtml" />
     <Content Include="Views\Busqueda\PorTitulo.cshtml" />
+    <Content Include="Views\Busqueda\PorAutor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

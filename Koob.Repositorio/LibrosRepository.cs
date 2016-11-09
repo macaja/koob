@@ -69,5 +69,16 @@ namespace Koob.Repositorio
                 return libro;
             }
         }
+        public List<dominio.Libro> obtenerLibroPorAutor(string autor)
+        {
+            IQueryable<libros> libros;
+            AutoMapper.Mapper.CreateMap<libros, dominio.Libro>();
+            using (var context = new KoobEntities())
+            {
+
+                libros = context.libros.Where(x => x.lib_autores == autor);
+                return new List<dominio.Libro>(libros.AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Libro>)).ToList();
+            }            
+        }
     }
 }
