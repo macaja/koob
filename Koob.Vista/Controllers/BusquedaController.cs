@@ -21,9 +21,15 @@ namespace Koob.Vista.Controllers
         // GET: Busqueda/PorTitulo/<titulo>
         public ActionResult PorTitulo(String titulo)
         {
+            categoriaRepository = new CategoriasRepository();
             libroRepository = new LibrosRepository();
-            var libro = libroRepository.obtenerLibroPorTitulo(titulo);
-            return View(libro);
+            var libros = libroRepository.obtenerLibroPorTitulo(titulo);
+            foreach (var item in libros)
+            {
+                item.lib_catNombre = categoriaRepository.ObtenerPorID(item.cat_codigo).cat_nombre;
+            }
+
+            return View(libros);
         }
 
         // GET: Busqueda/PorTitulo/<titulo>
