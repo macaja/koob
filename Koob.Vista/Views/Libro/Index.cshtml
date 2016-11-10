@@ -8,7 +8,7 @@
 <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Busquedas.js")"></script>
 <div class="wrapper-main">
     <h2>Libros disponibles: </h2>
-    <div>
+    <div class="div-form-share">
         <form class="form-inline">
             <div class="form-group">
                 <input id="titulo" type="text" class="form-control"  placeholder="Buscar Por Titulo" >
@@ -52,6 +52,7 @@
             <nav id="listing-nav">
                 <span class="title">Escoger Categorias</span>
                 <ul class="princip-categorias">
+
                     <li>
                         <a href='@Url.Action("Index", "Populares")' class="glyphicon glyphicon-fire cate">
                             <span>Populares</span>

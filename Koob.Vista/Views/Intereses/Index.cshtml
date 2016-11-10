@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Koob.Dominio.Intereses>
+@{
+    ViewBag.Title = "Interesados";
+
+}
+<h2>Interesados</h2>
+<ol class="list-group">
+
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            <h3>Interesado: @Html.DisplayFor(modelItem => item.usu_email_interesado)</h3>
+            <a href="@Url.Action("Details", "Libro", new { id = item.lib_codigo })" class="thumbnail">
+                <img src=@("http://"+item.libro.lib_imagen) alt=@item.libro.lib_titulo>
+            </a>
+        </li>
+    }
+
+</ol>

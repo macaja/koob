@@ -17,6 +17,11 @@
     padding: 0 20px 20px;
 }
 
+.div-form-share{
+    margin: auto;
+    padding: 10px 20px 10px 10px;
+}
+
 .listing-side {
     float: left;
     width: 240px;

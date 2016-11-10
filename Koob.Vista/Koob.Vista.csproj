@@ -192,6 +192,7 @@
     <Compile Include="Controllers\DeseoController.cs" />
     <Compile Include="Controllers\FotoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InteresesController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PopularesController.cs" />
@@ -234,6 +235,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\custom\Busquedas.js" />
     <Content Include="Scripts\custom\Deseo.js" />
+    <Content Include="Scripts\custom\Interes.js" />
     <Content Include="Scripts\custom\Reporte.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -299,6 +301,7 @@
     <Content Include="Views\Busqueda\PorAutor.cshtml" />
     <Content Include="Views\Busqueda\PorCategoria.cshtml" />
     <Content Include="Views\Sweet\Alert.cshtml" />
+    <Content Include="Views\Intereses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
