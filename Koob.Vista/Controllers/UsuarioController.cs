@@ -18,7 +18,9 @@ namespace Koob.Vista.Controllers
 {
     public class UsuarioController : Controller
     {
+        private CategoriasRepository categoriasRepository;
         private UsuarioRepository usuarioRepository;
+        private LibrosRepository librosRepository;
 
         // GET: Usuario
         public ActionResult Index()
@@ -26,13 +28,6 @@ namespace Koob.Vista.Controllers
             usuarioRepository = new UsuarioRepository();
             var usuarios = usuarioRepository.ObtenerUsuarios();
             return View(usuarios);
-        }
-        
-        // GET: Libros del usuario
-        public ActionResult Libros()
-        {
-            
-            return View();
         }
 
         // GET: Usuario/Details/5
@@ -63,7 +58,7 @@ namespace Koob.Vista.Controllers
                 if (model==true)//Verificar que el email y clave exista utilizando el método privado 
                 {
                     FormsAuthentication.SetAuthCookie(login.usu_email, false); //crea variable de usuario 
-                    return RedirectToAction("Index", "Home");  //dirigir controlador home vista Index una vez se a autenticado en el sistema
+                    return RedirectToAction("Index", "Libro");  //dirigir controlador home vista Index una vez se a autenticado en el sistema
                 }
                 else
                 {
@@ -77,7 +72,7 @@ namespace Koob.Vista.Controllers
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Libro");
         }
 
 
@@ -101,7 +96,7 @@ namespace Koob.Vista.Controllers
                var usu = AutoMapper.Mapper.Map<Dominio.Usuario>(model);
                 usuarioRepository.InsertarUsuario(usu);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Libro");
             }
             catch
             {
@@ -195,6 +190,22 @@ namespace Koob.Vista.Controllers
                 return View();
             }
         }
+
+
+        //GET: Usuario/Libros
+        public ActionResult Libros(string email)
+        {
+            categoriasRepository = new CategoriasRepository();
+            librosRepository = new LibrosRepository();
+            var misLibros = librosRepository.obtenerLibroPorUsuario(email);
+            foreach (var item in misLibros)
+            {
+                item.lib_catNombre = categoriasRepository.ObtenerPorID(item.cat_codigo).cat_nombre;
+            }
+
+            return View(misLibros);
+        }
+
 
         // GET: Usuario/Edit/5
         public ActionResult Edit(int id)

@@ -59,21 +59,60 @@ namespace Koob.Vista.Controllers
                 bool seagrego=deseoRepository.agregarDeseo(deseo);
                 if (seagrego)
                 {
-                    resultado.Data = new { mensaje = "Se ha agregado a su lista de deseos" };
+                    resultado.Data = 1;
+                    return Json("1");
                 }
                 else
                 {
-                    resultado.Data = new { mensaje = "El libro se ha quitado de su lista de deseos" };
+                    resultado.Data = 0;
+                    return Json("0");
                 }
-                return resultado;
+                //return resultado;
 
             }
             catch
             {
-                resultado.Data = new { mensaje = "ocurrio un error al agregar el libro a su lista de deseos" };
-                return resultado;
+                resultado.Data = new { mensaje = "ocurrio un error al agregar el libro a su lista de intereses" };
+                return Json("error");
             }
         }
+
+
+
+        public ActionResult verifyDeseo()
+        {
+            return View();
+        }
+
+        // POST: Deseo/Create
+        [HttpPost]
+        public ActionResult verifyDeseo(Dominio.Deseo deseo)
+        {
+            var resultado = new JsonResult();
+            try
+            {
+                deseoRepository = new DeseoRepository();
+
+                int esta = deseoRepository.verificarDocumentReady(deseo.usu_email, deseo.lib_codigo);
+                if (esta == 1)
+                {
+                    return Json("1");
+                }
+                else
+                {
+                    return Json("0");
+                }
+
+
+            }
+            catch
+            {
+                resultado.Data = new { mensaje = "ocurrio un error al buscar si estaba en su lista de intereses" };
+                return Json("Error");
+            }
+    }
+
+
 
         // GET: Deseo/Edit/5
         public ActionResult Edit(int id)

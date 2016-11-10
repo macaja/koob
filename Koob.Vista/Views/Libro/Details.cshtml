@@ -9,7 +9,6 @@
 
 <div class="row">
     <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
             <img src=@("http://"+Model.lib_imagen) alt=@Model.lib_titulo>
             <div class="caption">
                 <h3>@Html.DisplayFor(model => model.lib_titulo)</h3>
@@ -19,31 +18,35 @@
                 <h4>@Html.DisplayFor(model => model.lib_isbn)</h4>
                 <h4>@Html.DisplayFor(model => model.lib_ubicacion)</h4>
                 <p>@Html.DisplayFor(model => model.lib_descripcion)</p>
-                <h5>Propietario: <a href="@Url.Action("usuario", "Deseo", new { email = Model.usu_email })">@Html.DisplayFor(model => model.usu_email)</a></h5>
+                <h5>Propietario: <a href="/Usuario/Libros/?email=@Model.usu_email">@Html.DisplayFor(model => model.usu_email)</a></h5>
                 @if (Request.IsAuthenticated && Model.usu_email != User.Identity.Name && User.Identity.Name != "admin")
                 {
+                    <div class="div-botones">
+                                <input id="libro_codigo" type="hidden" value=@Model.lib_codigo />
+                        <span class="span-botones">
+                                    <input id="usu_email" type="hidden" value=@User.Identity.Name />
+                                    <button type="button" class="boton-deseo btn btn-default btn-sm" onclick="EnviarDatos(@Model.lib_codigo)">
+                                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                                    </button>
+                        </span>
 
-                    <h4>
-                        <input id="usu_email" type="hidden" value=@User.Identity.Name />
-                        <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@Model.lib_codigo)">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                        </button>
 
-                    </h4>
+                        <span class="span-botones">
+                            <input id="interesado_usu_email" type="hidden" value=@User.Identity.Name />
+                            <input id="dueno_usu_email" type="hidden" value=@Model.usu_email />
+                            <button type="button" class="boton-interesa interesNo btn btn-default btn-sm" onclick="EnviarInteres()">
+                                <span aria-hidden="true"></span><span id="cuerpoMensaje">Me Interesa</span>
+                            </button>
+                        </span>
 
-                    <h4>
-                        <input id="interesado_usu_email" type="hidden" value=@User.Identity.Name />
-                        <input id="dueno_usu_email" type="hidden" value=@Model.usu_email />
-                        <button type="button" class="btn btn-default btn-sm" onclick="EnviarInteres(@Model.lib_codigo)">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span><span id="cuerpoMensaje">Me Interesa</span>
-                        </button>
 
-                    </h4>
-
-                    <input id="propietario" type="hidden" value=@Model.usu_email />
-                    <button type="button" class="btn btn-default btn-sm" onclick="Reportar(@Model.lib_codigo)">
-                        Reportar
-                    </button>
+                        <span class="span-botones">
+                            <input id="propietario" type="hidden" value=@Model.usu_email />
+                            <button type="button" class="btn btn-default btn-sm" onclick="Reportar(@Model.lib_codigo)">
+                                Reportar
+                            </button>
+                        </span>
+</div>
 
                 }
                 @if (User.Identity.Name == "admin")
@@ -51,7 +54,7 @@
                     @Html.ActionLink("Eliminar Libro", "Delete", new { id = Model.lib_codigo })
                 }
             </div>
-        </div>
+       
     </div>
 </div>
 <p>
@@ -60,4 +63,6 @@
     *@
 
     @Html.ActionLink("Volver", "Index")
+
 </p>
+<script type="text/javascript" src="@Url.Content("~/Scripts/custom/Verificar.js")"></script>

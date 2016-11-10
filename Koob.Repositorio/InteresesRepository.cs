@@ -51,6 +51,30 @@ namespace Koob.Repositorio
             return losQueSe;
         }
 
+        private List<dominio.Intereses> losQueMeInteresaron(String email)
+        {
+            IQueryable<interesados> interesados;
+            AutoMapper.Mapper.CreateMap<interesados, dominio.Intereses>();
+            using (var context = new KoobEntities())
+            {
+
+                interesados = context.interesados.Where(x => x.usu_email_interesado == email);
+                return new List<dominio.Intereses>(interesados.AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Intereses>)).ToList();
+            }
+        }
+
+        public List<dominio.Intereses> meInteresan(string email)
+        {
+            List<dominio.Intereses> losQueMe = losQueMeInteresaron(email);
+            LibrosRepository librosRepository = new LibrosRepository();
+            foreach (var interesado in losQueMe)
+            {
+                interesado.libro = librosRepository.obtenerLibPorID(interesado.lib_codigo);
+            }
+
+            return losQueMe;
+        }
+
 
         private interesados verificar(string email, int libCodigo)
         {
@@ -105,6 +129,25 @@ namespace Koob.Repositorio
                 return false;
             }
         }
+
+        public int verificarDocumentReady(string email, int libCodigo)
+        {
+
+            using (var context = new KoobEntities())
+            {
+                var lib = context.interesados.Where(x => x.usu_email_interesado == email && x.lib_codigo == libCodigo).FirstOrDefault();
+                if (lib != null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+        }
+
         private void quitarInteresPorID(int interesId)
         {
 

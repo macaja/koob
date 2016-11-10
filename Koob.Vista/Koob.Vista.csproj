@@ -237,6 +237,7 @@
     <Content Include="Scripts\custom\Deseo.js" />
     <Content Include="Scripts\custom\Interes.js" />
     <Content Include="Scripts\custom\Reporte.js" />
+    <Content Include="Scripts\custom\Verificar.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -302,6 +303,8 @@
     <Content Include="Views\Busqueda\PorCategoria.cshtml" />
     <Content Include="Views\Sweet\Alert.cshtml" />
     <Content Include="Views\Intereses\Index.cshtml" />
+    <Content Include="Views\Usuario\Libros.cshtml" />
+    <Content Include="Views\Intereses\Propios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,10 +2,10 @@
 @using Microsoft.AspNet.Identity
 
 @{
-    ViewBag.Title = "Lista de Deseos";
+    ViewBag.Title = "Lista de Libros";
 
 }
-<h2>Lista de Deseos</h2>
+<h2>Lista de Libros</h2>
 <div style="display:block">
     <ol class="list-group">
 
@@ -21,11 +21,10 @@
                     <div>
                         <h2> @Html.DisplayFor(modelItem => item.lib_titulo)</h2>
                         <h4>@Html.DisplayFor(modelItem => item.lib_autores)</h4>
-                        <h4><a href="/Usuario/Libros/?email=@item.usu_email">@Html.DisplayFor(modelItem => item.usu_email)</a></h4>
                         <h4>@Html.DisplayFor(modelItem => item.lib_catNombre)</h4>
 
                     </div>
-                    
+
 
                 </div>
             </li>

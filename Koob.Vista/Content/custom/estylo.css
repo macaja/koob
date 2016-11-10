@@ -121,3 +121,23 @@ h4 {
     padding: 10px 10px 10px 10px;
     vertical-align: top;
 }
+.div-botones{
+    display: inline-block;
+    margin:auto;
+    padding: 10px 10px 10px 10px;
+    vertical-align: central;
+}
+.span-botones{
+    display: inline-block;
+    margin:auto;
+    padding: 10px 10px 10px 10px;
+    vertical-align: central;
+}
+.interesSi{
+   background-color: #d2021f;
+   color: #ffffff;
+}
+.interesNo{
+    background-color: #fff;
+    color: #333333;
+}

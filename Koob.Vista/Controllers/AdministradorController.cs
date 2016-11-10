@@ -54,7 +54,7 @@ namespace Koob.Vista.Controllers
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Libro");
         }
 
 

@@ -1,5 +1,6 @@
-﻿function EnviarInteres(libCodigo) {
-    var codigo = libCodigo;
+﻿
+function EnviarInteres() {
+    var codigo = $('#libro_codigo').val();
     var interesado = $('#interesado_usu_email').val();
     var dueno = $('#dueno_usu_email').val();
 
@@ -15,9 +16,14 @@
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(Intereses),
-        success: function () {
-            $('.glyphicon glyphicon-heart').css("color", "red")
-            $('#cuerpoMensaje').text(resultado.Data.mensaje);
+        success: function (resultado) {
+            if (resultado == "1") {
+                $('.boton-interesa').addClass("interesSi").removeClass("interesNo")
+            }
+            else {
+                $('.boton-interesa').addClass("interesNo").removeClass("interesSi")
+           
+            }
         },
         error: function () {
             alert('Ocurrió un error al agregar el libro a su lista de interes');

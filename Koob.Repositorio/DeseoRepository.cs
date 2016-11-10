@@ -80,6 +80,26 @@ namespace Koob.Repositorio
                 return false;
             }
         }
+
+
+        public int verificarDocumentReady(string email, int libCodigo)
+        {
+
+            using (var context = new KoobEntities())
+            {
+                var lib = context.deseos.Where(x => x.usu_email == email && x.lib_codigo == libCodigo).FirstOrDefault();
+                if (lib != null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+        }
+
         private void quitarDeseoPorID(int deseo)
         {
 

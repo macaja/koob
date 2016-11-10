@@ -14,11 +14,19 @@ namespace Koob.Vista.Controllers
 
         private InteresesRepository interesesRepository;
 
-        // GET: Intereses
+        // GET: Intereses  --Los que se interesaron en mis libros--
         public ActionResult Index()
         {
             interesesRepository = new InteresesRepository();
             var interesados = interesesRepository.quienSeIntereso(User.Identity.Name);
+            return View(interesados);
+        }
+
+        // GET: Intereses/Propios --Libros en los que me interese--
+        public ActionResult Propios()
+        {
+            interesesRepository = new InteresesRepository();
+            var interesados = interesesRepository.meInteresan(User.Identity.Name);
             return View(interesados);
         }
 
@@ -46,21 +54,58 @@ namespace Koob.Vista.Controllers
                 bool seagrego = interesesRepository.agregarInteres(interes);
                 if (seagrego)
                 {
-                    resultado.Data = new { mensaje = "Se ha agregado a su lista de interes" };
+                    resultado.Data = 1;
+                    return Json("1");
                 }
                 else
                 {
-                    resultado.Data = new { mensaje = "El libro se ha quitado de su lista de interes" };
+                    resultado.Data = 0;
+                    return Json("0");
                 }
-                return resultado;
+                //return resultado;
 
             }
             catch
             {
-                resultado.Data = new { mensaje = "ocurrio un error al agregar el libro a su lista de deseos" };
-                return resultado;
+                resultado.Data = new { mensaje = "ocurrio un error al agregar el libro a su lista de intereses" };
+                return Json("error");
             }
         }
+
+        public ActionResult verifyInteres()
+        {
+            return View();
+        }
+
+        // POST: Deseo/Create
+        [HttpPost]
+        public ActionResult verifyInteres(Dominio.Intereses interes)
+        {
+            var resultado = new JsonResult();
+            try
+            {
+                interesesRepository = new InteresesRepository();
+
+                int esta = interesesRepository.verificarDocumentReady(interes.usu_email_interesado, interes.lib_codigo);
+                if (esta==1)
+                {
+                    return Json("1");
+                }
+                else
+                {
+                    return Json("0");
+                }
+
+
+            }
+            catch
+            {
+                resultado.Data = new { mensaje = "ocurrio un error al buscar si estaba en su lista de intereses" };
+                return Json("Error");
+            }
+        }
+
+
         // GET: Intereses/Edit/5
         public ActionResult Edit(int id)
         {

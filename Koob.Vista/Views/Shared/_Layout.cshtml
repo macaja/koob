@@ -19,11 +19,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Koob", "Index", "Libro", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Koob", "Index", "Libro")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                 </ul>
@@ -44,6 +43,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Deseo.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Interes.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Verificar.js")"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

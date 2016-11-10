@@ -6,6 +6,10 @@
 
 }
 <script type="text/javascript" src="@Url.Content("~/Scripts/custom/Busquedas.js")"></script>
+<div class="jumbotron">
+    <h1>Koob</h1>
+    <p class="lead">Koob es una pagina que te facilita el intercambio de libros que ya no usas, para adquirir uno nuevo el cual te puede aportar nuevos conociemientos</p>
+</div>
 <div class="wrapper-main">
     <h2>Libros disponibles: </h2>
     <div class="div-form-share">
@@ -58,16 +62,6 @@
                             <span>Populares</span>
                         </a>
                     </li>
-                    <li>
-                        <a href='' class="glyphicon glyphicon-user cate">
-                            <span>Autor</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='' class="glyphicon glyphicon-tower cate">
-                            <span>Fantasia</span>
-                        </a>
-                    </li>
                 </ul>
             </nav>
         </aside>
@@ -86,21 +80,8 @@
                     <div class="items-info">
                         <h3> @Html.DisplayFor(modelItem => item.lib_titulo)</h3>
                         <h4>@Html.DisplayFor(modelItem => item.lib_autores)</h4>
-                        <h4><a href="@Url.Action("usuario", "Deseo", new { email = item.usu_email })">@Html.DisplayFor(modelItem => item.usu_email)</a></h4>
+                        <h4><a href="/Usuario/Libros/?email=@item.usu_email">@Html.DisplayFor(modelItem => item.usu_email)</a></h4>
                         <h4>@Html.DisplayFor(modelItem => item.lib_catNombre)</h4>
-
-                        @if (Request.IsAuthenticated && item.usu_email != User.Identity.Name && User.Identity.Name != "admin")
-                {
-                            <h4>
-
-                                <input id="usu_email" type="hidden" value=@User.Identity.Name />
-                                <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@item.lib_codigo)">
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                </button>
-
-                            </h4>
-
-                        }
                     </div>
                 </div>
             }

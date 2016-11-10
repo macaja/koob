@@ -24,21 +24,8 @@
                         <div>
                             <h2> @Html.DisplayFor(modelItem => item.lib_titulo)</h2>
                             <h4>@Html.DisplayFor(modelItem => item.lib_autores)</h4>
-                            <h4><a href="@Url.Action("usuario", "Deseo", new { email = item.usu_email })">@Html.DisplayFor(modelItem => item.usu_email)</a></h4>
+                            <h4><a href="/Usuario/Libros/?email=@item.usu_email">@Html.DisplayFor(modelItem => item.usu_email)</a></h4>
                             <h4>@Html.DisplayFor(modelItem => item.lib_catNombre)</h4>
-
-                            @if (Request.IsAuthenticated && item.usu_email != User.Identity.Name)
-                            {
-                                <h4>
-
-                                    <input id="usu_email" type="hidden" value=@User.Identity.Name />
-                                    <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@item.lib_codigo)">
-                                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                    </button>
-
-                                </h4>
-
-                            }
                         </div>
 
 
