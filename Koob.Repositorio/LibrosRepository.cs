@@ -81,5 +81,19 @@ namespace Koob.Repositorio
                 return new List<dominio.Libro>(libros.AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Libro>)).ToList();
             }            
         }
+        public List<dominio.Libro> obtenerLibroPorCategoria(string categoria)
+        {
+            IQueryable<libros> libros;
+            AutoMapper.Mapper.CreateMap<libros, dominio.Libro>();
+            using (var context = new KoobEntities())
+            {
+
+                libros = from u in context.libros
+                         join v in context.categorias on u.cat_codigo equals v.cat_codigo
+                         where v.cat_nombre == categoria
+                         select u;
+                return new List<dominio.Libro>(libros.AsEnumerable().Select(AutoMapper.Mapper.Map<dominio.Libro>)).ToList();
+            }
+        }
     }
 }

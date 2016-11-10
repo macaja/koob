@@ -11,20 +11,41 @@
     <div>
         <form class="form-inline">
             <div class="form-group">
-                <input id="titulo" type="text" class="form-control"  placeholder="Buscar Por Titulo">
+                <input id="titulo" type="text" class="form-control"  placeholder="Buscar Por Titulo" >
             </div>            
             <button type="button" class="btn btn-default btn-sm" onclick="BuscarTitulo()">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </button>
-        </form>
-        <form class="form-inline">
             <div class="form-group">
                 <input id="autor" type="text" class="form-control" placeholder="Buscar Por Autor">
             </div>
             <button type="button" class="btn btn-default btn-sm" onclick="BuscarAutor()">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </button>
-        </form>       
+            <div class="form-group">
+                <select id="categoria" class="btn btn-default dropdown-toggle">
+                    <option value="" disabled selected>Buscar por Categoria</option>
+                    <option>Ciencia Ficción</option>
+                    <option>Novelas</option>
+                    <option>Técnicos</option>
+                    <option>Negocios</option>
+                    <option>Arte</option>
+                    <option>Cine</option>
+                    <option>Ciencia</option>
+                    <option>Desarrollo Web</option>
+                    <option>Filosofía</option>
+                    <option>Historia</option>
+                    <option>Geografía</option>
+                    <option>Electrónica</option>
+                    <option>Ciencias Aplicadas</option>
+                </select>
+
+            </div>
+            <button type="button" class="btn btn-default btn-sm" onclick="BuscarCategoria()">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+        </form>
+               
     </div>
     <div class="row">
         <aside class="listing-side">

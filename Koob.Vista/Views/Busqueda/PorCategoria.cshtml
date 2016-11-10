@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<Koob.Dominio.Libro>
-
 @{
-    ViewBag.Title = "Por Titulo";
+    ViewBag.Title = "Por Categoria";
 }
 
-<h2>Resultado de Busqueda Por Titulo</h2>
-
+<h2>Resultado de Busqueda Por Categoria</h2>
 <div style="display:block">
     <ol class="list-group">
         @if (!Model.Any())
@@ -52,7 +50,6 @@
 
     </ol>
 </div>
-
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")

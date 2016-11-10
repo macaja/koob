@@ -46,6 +46,20 @@ namespace Koob.Vista.Controllers
             return View(libros);
         }
 
+        // GET: Busqueda/PorCategoria/<titulo>
+        public ActionResult PorCategoria(String categoria)
+        {
+            categoriaRepository = new CategoriasRepository();
+            libroRepository = new LibrosRepository();
+            var libros = libroRepository.obtenerLibroPorCategoria(categoria);
+            foreach (var item in libros)
+            {
+                item.lib_catNombre = categoriaRepository.ObtenerPorID(item.cat_codigo).cat_nombre;
+            }
+
+            return View(libros);
+        }
+
         // GET: Busqueda/Create
         public ActionResult Create()
         {

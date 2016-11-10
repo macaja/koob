@@ -1,41 +1,52 @@
 ﻿@model IEnumerable<Koob.Dominio.Libro>
+@{
+    ViewBag.Title = "Por Autor";
+}
 
+<h2>Resultado de Busqueda Por Autor</h2>
 <div style="display:block">
     <ol class="list-group">
-
-        @foreach (var item in Model)
+        @if(!Model.Any())
         {
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-xs-6 col-md-3">
-                        <a href="@Url.Action("Details", "Libro", new { id = item.lib_codigo })" class="thumbnail">
-                            <img src=@("http://"+item.lib_imagen) alt=@item.lib_titulo>
-                        </a>
-                    </div>
-                    <div>
-                        <h2> @Html.DisplayFor(modelItem => item.lib_titulo)</h2>
-                        <h4>@Html.DisplayFor(modelItem => item.lib_autores)</h4>
-                        <h4><a href="@Url.Action("usuario", "Deseo", new { email = item.usu_email })">@Html.DisplayFor(modelItem => item.usu_email)</a></h4>
-                        <h4>@Html.DisplayFor(modelItem => item.lib_catNombre)</h4>
-
-                        @if (Request.IsAuthenticated && item.usu_email != User.Identity.Name)
-                        {
-                            <h4>
-
-                                <input id="usu_email" type="hidden" value=@User.Identity.Name />
-                                <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@item.lib_codigo)">
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                </button>
-
-                            </h4>
-
-                        }
-                    </div>
-
-
-                </div>
-            </li>
+            <h2>No hay libros que mostrar para esta busqueda!</h2>
         }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-3">
+                            <a href="@Url.Action("Details", "Libro", new { id = item.lib_codigo })" class="thumbnail">
+                                <img src=@("http://"+item.lib_imagen) alt=@item.lib_titulo>
+                            </a>
+                        </div>
+                        <div>
+                            <h2> @Html.DisplayFor(modelItem => item.lib_titulo)</h2>
+                            <h4>@Html.DisplayFor(modelItem => item.lib_autores)</h4>
+                            <h4><a href="@Url.Action("usuario", "Deseo", new { email = item.usu_email })">@Html.DisplayFor(modelItem => item.usu_email)</a></h4>
+                            <h4>@Html.DisplayFor(modelItem => item.lib_catNombre)</h4>
+
+                            @if (Request.IsAuthenticated && item.usu_email != User.Identity.Name)
+                            {
+                                <h4>
+
+                                    <input id="usu_email" type="hidden" value=@User.Identity.Name />
+                                    <button type="button" class="btn btn-default btn-sm" onclick="EnviarDatos(@item.lib_codigo)">
+                                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                                    </button>
+
+                                </h4>
+
+                            }
+                        </div>
+
+
+                    </div>
+                </li>
+            }
+        }
+        
 
     </ol>
 </div>
