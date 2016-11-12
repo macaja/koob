@@ -18,7 +18,7 @@
     
 }
 function BuscarAutor() {
-    var autor = $('#autor').val();
+    var autor = $('#autor').val();    
     if (autor === '') {
         alert('Debe ingresar un valor en el campo de busqueda por autor');
     }
@@ -37,12 +37,12 @@ function BuscarAutor() {
 
 }
 function BuscarCategoria() {
-    var categoria = $('#categoria').val();
+    var categoria = $('#categoria').val();    
     $.ajax({
         type: "GET",
         url: "/Busqueda/PorCategoria?categoria=" + categoria,
         success: function (resultado) {
-            window.location = '/Busqueda/PorCategoria?categoria=' + categoria;
+            window.location = '/Busqueda/PorCategoria?categoria=' + categoria;            
         },
         error: function () {
             alert('El libro no existe');
